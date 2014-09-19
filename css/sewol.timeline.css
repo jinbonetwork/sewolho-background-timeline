@@ -1,0 +1,183 @@
+.sewol-timeline-wrapper {
+}
+.sewol-timeline {
+	border-left: 1px solid #fff;
+	padding: 0 0 0 30px;
+	margin: 0 0 0 20px;
+	list-style: none;
+	display: inline-block;
+	max-width: 40%;
+}
+.sewol-timeline .timeline-item {
+	margin: 0;
+	padding: 0 0 20px 0;
+}
+.sewol-timeline .timeline-item.hidden {
+	display: none;
+}
+.sewol-timeline .timeline-item .date {
+	position: relative;
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+	font-weight: bold;
+	color: #FBF59B;
+}
+.sewol-timeline .timeline-item .date:before {
+	position: absolute;
+	left: -36px;
+	top: 6px;
+	display: inline-block;
+	width: 1px;
+	height: 1px;
+	border: 5px solid #FBF59B;
+	border-radius: 6px;
+	content: ' ';
+	background: none;
+	transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+}
+.sewol-timeline .timeline-item.active .date:before {
+	left: -40px;
+	top: 2px;
+	width: 10px;
+	height: 10px;
+	border-radius: 10px;
+}
+.sewol-timeline .timeline-item .date .clone {
+	position: absolute;
+	z-index: 2;
+	left: 0;
+	top: 0;
+	width: 0%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	border-bottom: 3px solid #FBF59B;
+	transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+}
+.sewol-timeline .timeline-item.active .date .clone {
+	width: 100%;
+}
+.sewol-timeline .timeline-item .date .clone .after {
+	position: absolute;
+	z-index: -1;
+	right: 0;
+	bottom: 0;
+	height: 0;
+	width: 0;
+	background: none;
+	border-bottom: 3px solid #FBF59B;
+	transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+}
+.sewol-timeline .timeline-item.active .date .clone.active .after {
+	display: block;
+	width: 25px;
+	transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	transform: translateX(21px) translateY(-5px) rotate(-45deg);
+	-webkit-transform: translateX(21px) translateY(-5px) rotate(-45deg);
+	-moz-transform: translateX(21px) translateY(-5px) rotate(-45deg);
+	-ms-transform: translateX(21px) translateY(-5px) rotate(-45deg);
+}
+.sewol-timeline .timeline-item .item-content {
+	margin: 0;
+	padding: 8px 0 1% 0;
+}
+.sewol-timeline .timeline-item .item-content.hidden {
+	display: none;
+}
+.sewol-timeline .timeline-item .item-content .headline {
+	display: inline-block;
+	position: relative;
+	margin: 0;
+	padding: 1px 4px 0 4px;
+	color: #fff;
+	font-size: 0.95em;
+	cursor: pointer;
+}
+.overlay .sewol-timeline {
+	max-width: none;
+}
+.overlay .sewol-timeline .timeline-item .item-content .headline {
+	max-width: 100%;
+}
+.sewol-timeline .timeline-item .item-content .headline .clone {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 0%;
+	height: 100%;
+	background: #fff;
+	color: #2B445A;
+	overflow: hidden;
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	-o-transition: all 0.5s;
+}
+.sewol-timeline .timeline-item .item-content .headline .clone span {
+	display: inline-block;
+	width: auto non-inherit;
+	height: auto non-inherit;
+	padding: 1px 4px 0 4px;
+}
+.sewol-timeline .timeline-item .item-content .headline .after {
+	position: absolute;
+	left: 100%;
+	top: 50%;
+	height: 0;
+	width: 0;
+	border-bottom: 1px dotted #fff;
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	-o-transition: all 0.5s;
+}
+.sewol-timeline .timeline-item .item-content .headline.hover .clone {
+	width: 100%;
+}
+.sewol-timeline .timeline-item .item-content .text-position-wrapper {
+	position: absolute;
+	top: 0;
+	left: -120%;
+}
+.sewol-timeline .timeline-item .item-content .text {
+	position: fixed;
+	z-index: -1000;
+	top: 10%;
+	left: 50%;
+	width: 50%;
+	display: none;
+	height: 80%;
+	overflow: hidden;
+}
+.sewol-timeline .timeline-item .item-content .text.effect {
+	transition: all 0.8s;
+	-webkit-transition: all 0.8s;
+	-moz-transition: all 0.8s;
+	-ms-transition: all 0.8s;
+	-o-transition: all 0.8s;
+}
+.sewol-timeline .timeline-item .item-content.active .text {
+	z-index: 2;
+	display: block;
+}
+.overlay .sewol-timeline .timeline-item .item-content.active .text {
+	z-index: 999999;
+	top: 5%;
+}
