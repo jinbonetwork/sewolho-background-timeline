@@ -7,6 +7,7 @@
 							<h6 id="marsa-sub-chief" class="point" data-endpoint="bottom" data-tree="umi kcg haewon shipowners kr">부총재</h6>
 							<h6 id="marsa-sub-board" class="point" data-endpoint="right" data-tree="mof kst navy">이사</h6>
 						</div>
+						<div class="org-description"><?php print $tags['marsa']['description']; ?></div>
 					</div>
 					<div id="politic" class="org element whitebox">
 						<h5>정치권</h5>
@@ -18,12 +19,14 @@
 							<li><label>인천광역시장</label> 송영길</li>
 							<li><label>전 해양수산부장관</label> 오거돈</li>
 						</ul>
+						<div class="org-description"><?php print $tags['politic']['description']; ?></div>
 					</div>
 					<div id="umi" class="org element whitebox">
 						<h5>언딘</h5>
 						<ul>
 							<li><label>대표이사</label> 김윤상</li>
 						</ul>
+						<div class="org-description"><?php print $tags['umi']['description']; ?></div>
 					</div>
 					<div id="kcg" class="org element whitebox">
 						<h5>해양경찰</h5>
@@ -31,42 +34,49 @@
 							<li><label>전 남해지방해양경찰청장</label> 김용환</li>
 							<li><label>해양경찰청 경비안전국장</label> 최상환</li>
 						</ul>
+						<div class="org-description"><?php print $tags['kcg']['description']; ?></div>
 					</div>
 					<div id="haewon" class="org element whitebox">
 						<h5>한국해운조합</h5>
 						<ul>
 							<li><label>회장</label> 이용섭</li>
 						</ul>
+						<div class="org-description"><?php print $tags['haewon']['description']; ?></div>
 					</div>
 					<div id="shipowners" class="org element whitebox">
 						<h5>한국선주협회</h5>
 						<ul>
 							<li><label>전무이사</label> 김영무</li>
 						</ul>
+						<div class="org-description"><?php print $tags['shipowners']['description']; ?></div>
 					</div>
 					<div id="kr" class="org element whitebox">
 						<h5>한국선급</h5>
 						<ul>
 							<li><label>경영지원본부장</label> 정명준</li>
 						</ul>
+						<div class="org-description"><?php print $tags['kr']['description']; ?></div>
 					</div>
 					<div id="navy" class="org element whitebox">
 						<h5>해군</h5>
 						<ul>
 							<li><label>해난구조대장</label> 장진홍</li>
 						</ul>
+						<div class="org-description"><?php print $tags['navy']['description']; ?></div>
 					</div>
 					<div id="kst" class="org element whitebox">
 						<h5>선박안전기술공단</h5>
 						<ul>
 							<li><label>이사장</label> 부원찬</li>
 						</ul>
+						<div class="org-description"><?php print $tags['kst']['description']; ?></div>
 					</div>
 					<div id="mof" class="org element whitebox">
 						<h5>해양수산부</h5>
 						<ul>
 							<li><label>감사관</label> 장황호</li>
 						</ul>
+						<div class="org-description"><?php print $tags['mof']['description']; ?></div>
 					</div>
 				</div>
 			</div>
