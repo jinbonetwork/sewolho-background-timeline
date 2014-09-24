@@ -62,11 +62,61 @@
     * four-slide 보드와 bookblock 모드로 자유롭게 오갈 수 있도록 만들어졌습니다.
     * 각 모드별로 auto-scroll 문제를 해결하기 위해 또 다른 jquery plugin perfect-scrollbar를 사용합니다.
     * 이 소스는 출처와 라이센스만 명시한다면 누구나 재배포, 수정배포가 가능합니다.
+    * 사용법
+      1. 기본 사용법: $('element').fsbb(options);
+         * 옵션
+           {
+              mode: 'cover(표지모드) / quart(전체보기)',
+              theme: 'sewol' (테마),
+              tearse_speed : '1s' (transition animate speed),
+              title: ''(표지 타이틀 element),
+              title_pos: {'left' : 0(표지 타이틀 left position), 'top' : 0(표지 타이틀 top position) },
+              background: ''(바탕 이미지),
+              useCoverAniate: true(표지모드일때 animate 활성 옵션),
+              bb_before: function(page) {} (four slide mode에서 bookblock 모드로 전환될때 onBefore Event function. argument: 활성화되는 chapter번호 1~4),
+              bb_after: function(page) {} (four slide mode에서 bookblock 모드로 전환될때 onAfter Event function. argument: 활성화되는 chapter번호 1~4)
+			}
+      2. method
+         * init(options)
+           * $('element').fsbb('init',{options});
+           * 위 기본 옵션과 동일
+         * bb_activate(options)
+           * $('element').fsbb('bb_activate',{options});
+           * 옵션
+             {
+				chapter: 1(활성화되는 chapter 번호 1~4),
+				bookblock_after: function() {} (bookblock 모드로 전환된후 afterEvent)
+             }
+    * License: MIT License
 
 2.  jquery.sewol-timeline.js
     * 폴더: js/jquery.sewol-timeline.js, css/sewol.timeline.css
     * 각 chapter는 타임라인 형식으로 구성되어 있습니다. 이 각각의 타임라인들을 실제로 콘트롤하는 jquery plugin 입니다.
     * 이 소스 역시 출처와 라이센스만 명시한다면 누구나 배포, 재수정 배포할 수 있습니다.
+    * 사용법
+      1. 기본 사용법: $('element').sewoltm(options);
+         * 옵션
+           {
+              theme: 'sewol' (테마),
+              mode: 'full(전체화면 사용. 상세내용 보기를 오른쪽으로) / overlay(부분화면 사용. 상세 내용보기를 overlay형태로 보기)',
+              tag: ''(특정 tag를 가지고 있는  타임라인 항목만 보여줌),
+              showContentAnimate: 'opacity'(타임라인의 상세내용을 보여줄때 활용할 animation effect. default: opacity),
+              eventHandle : 'true'(타임라인의 event handler(click/hover etc..) 를 활성화할지 여부),
+              onBefore: function() {}(타임라인의 활성화되기 전 beforeEvent),
+              onShowContent: function() {}(타임라인의 개별 항목이 상세보기할때 beforeEvent)
+           }
+      2. method
+         * init(options)
+           * $('element').sewoltm('init',{options});
+           * 위 기본 옵션과 동일
+         * activeElement(idx)
+           * $('element').sewoltm('activeElement',i);
+         * showContent(idx)
+           * $('element').sewoltm('activeElement',i,j);
+         * stop()
+           * $('element').sewoltm('stop');
+         * start()
+           * $('element').sewoltm('start',{options});
 
 3.  marsa.php
     * 폴더: marsa.php
@@ -89,11 +139,11 @@
 
 7.  style.css
     * 폴더: css/style.css
-    * 전체 콘텐츠에 대한 스타일시트입니다.
+    * 전체 콘텐츠와 요소들에 대한 스타일시트입니다.
  
 8.  icomoon
     * 폴더: css/fonts
-    * 이 사이트에서 사용하는 이미지 폰트입니다. icomoon 사이트의 무료 서비스를 이용하여 만들었습니다.
+    * 이 사이트에서 사용하는 이미지 폰트입니다. 주로 정부부처와 기관의 아이콘을 표시하기 위해 만들어졌습니다. 이 font는 icomoon 사이트의 무료 서비스를 이용하여 만들었습니다.
 
 4. 타임라인 데이터
 ------------------
