@@ -4,6 +4,8 @@
 소개
 ----
 
+<img src="http://taogi.net/special/sewolho/background/images/og.jpg">
+
 * <http://taogi.net/special/sewolho/background>
 
 2014.4.16 세월호 참사가 일어난 구조적 원인을 타임라인으로 구성했습니다.
