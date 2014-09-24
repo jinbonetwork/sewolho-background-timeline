@@ -15,7 +15,10 @@ function get_timeline($path) {
 	}
 	$tdata = $json['timeline']['tag'];
 	for($i = 0; $i < count($tdata); $i++) {
-		$tags[$tdata[$i]['key']] = $tdata[$i]['name'];
+		$tags[$tdata[$i]['key']] = array (
+			'name' => $tdata[$i]['name'],
+			'description' => $tdata[$i]['description']
+		);
 	}
 	$cdata = $json['timeline']['chapter'];
 	for($i = 0; $i < count($cdata); $i++) {

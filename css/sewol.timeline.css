@@ -106,7 +106,11 @@
 	padding: 1px 4px 0 4px;
 	color: #fff;
 	font-size: 0.95em;
+	font-weight: normal;
 	cursor: pointer;
+}
+.sewol-timeline .timeline-item .item-content .headline.hover {
+	font-weight: bold;
 }
 .overlay .sewol-timeline {
 	max-width: none;

@@ -12,15 +12,21 @@ $tags = $timeline['tag'];
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 	<meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 	<title>세월호는 왜..</title>
+	<meta property="og:title" content="세월호는 왜.." />
+	<meta property="og:site_name" content="Taogi Special Project: 세월호" />
+	<meta property="og:url" content="http://www.taogi.net/special/sewolho/background/" />
+	<meta property="og:description" content="세월호 참사의 구조적인 원인 타임라인" />
+	<meta property="og:image" content="http://www.taogi.net/special/sewolho/background/images/og.jpg" />
+	<link rel="shortcut icon" href="./images/favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="./css/layout.css">
 	<link rel="stylesheet" type="text/css" href="./fsbb/BookBlock/css/bookblock.css">
 	<link rel="stylesheet" type="text/css" href="./fsbb/perfect-scrollbar/min/perfect-scrollbar.min.css">
-	<link rel="stylesheet" type="text/css" href="./contrib/ButtonComponentMorph/css/component.css" />
 	<link rel="stylesheet" type="text/css" href="./fsbb/css/fsbb.component.css">
 	<link rel="stylesheet" type="text/css" href="./css/sewol.timeline.css">
+	<link rel="stylesheet" type="text/css" href="./css/marsa.diagram.css">
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
 	<!--[if IE]>
-	<script type="text/javascript" src="/resources/js/script.html5.js"></script>
+	<script type="text/javascript" src="./js/script.html5.js"></script>
 	<![endif]-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="./fsbb/BookBlock/js/jquerypp.custom.js"></script>
@@ -29,15 +35,8 @@ $tags = $timeline['tag'];
 	<script src="./fsbb/perfect-scrollbar/min/perfect-scrollbar.min.js"></script>
 	<script src="./fsbb/js/jquery.fsbb.js"></script>
 	<script type="text/javascript" src="./js/jquery.sewol-timeline.js"></script>
-	<!--script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
-	<script type="text/javascript">
-		WebFont.load({
-			custom: {
-				families: ['Nanum Gothic'],
-				urls: ['http://fonts.googleapis.com/earlyaccess/nanumgothic.css']
-			}
-		});
-	</script-->
+	<script type="text/javascript" src="./js/jquery.marsa-diagram.js"></script>
+	<script type="text/javascript" src="./contrib/jquery.actual/jquery.actual.min.js"></script>
 	<script type="text/javascript" src="./js/app.js"></script>
 </head>
 <body>
@@ -80,17 +79,23 @@ $tags = $timeline['tag'];
 																for($j=0; $j<@count($data[$i]['media']); $j++) {?>
 																	<dd>
 <?php																if($data[$i]['media'][$j]['caption'] || $data[$i]['media'][$j]['credit']) {?>
-																		<div class="caption"><?php print $data[$i]['media'][$j]['caption'].($data[$i]['media'][$j]['credit'] ? ($data[$i]['media'][$j]['caption'] ? " -" : "").($data[$i]['media'][$j]['credit']) : ""); ?></div>
-<?php																}?>
+																		<div class="caption">
+																			<a href="<?php print $data[$i]['media'][$j]['media']; ?>" target="_blank"><?php if($data[$i]['media'][$j]['credit']) {?> <span class="credit"><?php print $data[$i]['media'][$j]['credit']; ?></span> <?php } print $data[$i]['media'][$j]['caption']; ?></a>
+																		</div>
+<?php																} else {?>
 																		<div class="media"><a href="<?php print $data[$i]['media'][$j]['media']; ?>" target="_blank"><?php print $data[$i]['media'][$j]['media']; ?></a></div>
+<?php																}?>
 																	</dd>
 <?php															}
 															} else if($data[$i]['asset']) {?>
 																	<dd>
 <?php																if($data[$i]['asset']['caption'] || $data[$i]['asset']['credit']) {?>
-																		<div class="caption"><?php print $data[$i]['asset']['caption'].($data[$i]['asset']['credit'] ? ($data[$i]['asset']['caption'] ? " -" : "").($data[$i]['asset']['credit']) : ""); ?></div>
-<?php																}?>
+																		<div class="caption">
+																			<a href="<?php print $data[$i]['asset']['media']; ?>" target="_blank"><?php if($data[$i]['asset']['credit']) {?> <span class="credit"><?php print $data[$i]['asset']['credit']; ?></span> <?php } print $data[$i]['asset']['caption']; ?></a>
+																		</div>
+<?php																} else {?>
 																		<div class="media"><a href="<?php print $data[$i]['asset']['media']; ?>" target="_blank"><?php print $data[$i]['asset']['media']; ?></a></div>
+<?php																}?>
 																	</dd>
 <?php														}?>
 															</dl>
@@ -102,7 +107,7 @@ $tags = $timeline['tag'];
 															<dt>행위 주체</dt>
 <?php												if($data[$i]['tag']) {
 														foreach($data[$i]['tag'] as $t) {?>
-															<dd><div class="organize <?php print $t; ?>" data-tag="<?php print $t; ?>"><button class="btn"><?php print $tags[$t]; ?><span class="after"></span></button></div></dd>
+															<dd><div class="organize <?php print $t; ?>" data-tag="<?php print $t; ?>"><button class="btn"><?php print $tags[$t]['name']; ?><span class="after"></span></button><?php if($tags[$t]['description']) {?><div class="org-description"><?php print $tags[$t]['description']; ?></div><?php } ?></div></dd>
 <?php													}
 													}?>
 														</dl>
@@ -152,17 +157,23 @@ $tags = $timeline['tag'];
 																for($j=0; $j<@count($data[$i]['media']); $j++) {?>
 																	<dd>
 <?php																if($data[$i]['media'][$j]['caption'] || $data[$i]['media'][$j]['credit']) {?>
-																		<div class="caption"><?php print $data[$i]['media'][$j]['caption'].($data[$i]['media'][$j]['credit'] ? ($data[$i]['media'][$j]['caption'] ? " -" : "").($data[$i]['media'][$j]['credit']) : ""); ?></div>
-<?php																}?>
+																		<div class="caption">
+																			<a href="<?php print $data[$i]['media'][$j]['media']; ?>" target="_blank"><?php if($data[$i]['media'][$j]['credit']) {?> <span class="credit"><?php print $data[$i]['media'][$j]['credit']; ?></span> <?php } print $data[$i]['media'][$j]['caption']; ?></a>
+																		</div>
+<?php																} else {?>
 																		<div class="media"><a href="<?php print $data[$i]['media'][$j]['media']; ?>" target="_blank"><?php print $data[$i]['media'][$j]['media']; ?></a></div>
+<?php																}?>
 																	</dd>
 <?php															}
 															} else if($data[$i]['asset']) {?>
 																	<dd>
 <?php																if($data[$i]['asset']['caption'] || $data[$i]['asset']['credit']) {?>
-																		<div class="caption"><?php print $data[$i]['asset']['caption'].($data[$i]['asset']['credit'] ? ($data[$i]['asset']['caption'] ? " -" : "").($data[$i]['asset']['credit']) : ""); ?></div>
-<?php																}?>
+																		<div class="caption">
+																			<a href="<?php print $data[$i]['asset']['media']; ?>" target="_blank"><?php if($data[$i]['asset']['credit']) {?> <span class="credit"><?php print $data[$i]['asset']['credit']; ?></span> <?php } print $data[$i]['asset']['caption']; ?></a>
+																		</div>
+<?php																} else {?>
 																		<div class="media"><a href="<?php print $data[$i]['asset']['media']; ?>" target="_blank"><?php print $data[$i]['asset']['media']; ?></a></div>
+<?php																}?>
 																	</dd>
 <?php														}?>
 															</dl>
@@ -174,7 +185,7 @@ $tags = $timeline['tag'];
 															<dt>행위 주체</dt>
 <?php												if($data[$i]['tag']) {
 														foreach($data[$i]['tag'] as $t) {?>
-															<dd><div class="organize <?php print $t; ?>" data-tag="<?php print $t; ?>"><button class="btn"><?php print $tags[$t]; ?><span class="after"></span></button></div></dd>
+															<dd><div class="organize <?php print $t; ?>" data-tag="<?php print $t; ?>"><button class="btn"><?php print $tags[$t]['name']; ?><span class="after"></span></button><?php if($tags[$t]['description']) {?><div class="org-description"><?php print $tags[$t]['description']; ?></div><?php }?></div></dd>
 <?php													}
 													}?>
 														</dl>
@@ -224,17 +235,23 @@ $tags = $timeline['tag'];
 																for($j=0; $j<@count($data[$i]['media']); $j++) {?>
 																	<dd>
 <?php																if($data[$i]['media'][$j]['caption'] || $data[$i]['media'][$j]['credit']) {?>
-																		<div class="caption"><?php print $data[$i]['media'][$j]['caption'].($data[$i]['media'][$j]['credit'] ? ($data[$i]['media'][$j]['caption'] ? " -" : "").($data[$i]['media'][$j]['credit']) : ""); ?></div>
-<?php																}?>
+																		<div class="caption">
+																			<a href="<?php print $data[$i]['media'][$j]['media']; ?>" target="_blank"><?php if($data[$i]['media'][$j]['credit']) {?> <span class="credit"><?php print $data[$i]['media'][$j]['credit']; ?></span> <?php } print $data[$i]['media'][$j]['caption']; ?></a>
+																		</div>
+<?php																} else {?>
 																		<div class="media"><a href="<?php print $data[$i]['media'][$j]['media']; ?>" target="_blank"><?php print $data[$i]['media'][$j]['media']; ?></a></div>
+<?php																}?>
 																	</dd>
 <?php															}
 															} else if($data[$i]['asset']) {?>
 																	<dd>
 <?php																if($data[$i]['asset']['caption'] || $data[$i]['asset']['credit']) {?>
-																		<div class="caption"><?php print $data[$i]['asset']['caption'].($data[$i]['asset']['credit'] ? ($data[$i]['asset']['caption'] ? " -" : "").($data[$i]['asset']['credit']) : ""); ?></div>
-<?php																}?>
+																		<div class="caption">
+																			<a href="<?php print $data[$i]['asset']['media']; ?>" target="_blank"><?php if($data[$i]['asset']['credit']) {?> <span class="credit"><?php print $data[$i]['asset']['credit']; ?></span> <?php } print $data[$i]['asset']['caption']; ?></a>
+																		</div>
+<?php																} else {?>
 																		<div class="media"><a href="<?php print $data[$i]['asset']['media']; ?>" target="_blank"><?php print $data[$i]['asset']['media']; ?></a></div>
+<?php																}?>
 																	</dd>
 <?php														}?>
 															</dl>
@@ -246,7 +263,7 @@ $tags = $timeline['tag'];
 															<dt>행위 주체</dt>
 <?php												if($data[$i]['tag']) {
 														foreach($data[$i]['tag'] as $t) {?>
-															<dd><div class="organize <?php print $t; ?>" data-tag="<?php print $t; ?>"><button class="btn"><?php print $tags[$t]; ?><span class="after"></span></button></div></dd>
+															<dd><div class="organize <?php print $t; ?>" data-tag="<?php print $t; ?>"><button class="btn"><?php print $tags[$t]['name']; ?><span class="after"></span></button><?php if($tags[$t]['description']) {?><div class="org-description"><?php print $tags[$t]['description']; ?></div><?php }?></div></dd>
 <?php													}
 													}?>
 														</dl>
@@ -296,17 +313,23 @@ $tags = $timeline['tag'];
 																for($j=0; $j<@count($data[$i]['media']); $j++) {?>
 																	<dd>
 <?php																if($data[$i]['media'][$j]['caption'] || $data[$i]['media'][$j]['credit']) {?>
-																		<div class="caption"><?php print $data[$i]['media'][$j]['caption'].($data[$i]['media'][$j]['credit'] ? ($data[$i]['media'][$j]['caption'] ? " -" : "").($data[$i]['media'][$j]['credit']) : ""); ?></div>
-<?php																}?>
+																		<div class="caption">
+																			<a href="<?php print $data[$i]['media'][$j]['media']; ?>" target="_blank"><?php if($data[$i]['media'][$j]['credit']) {?> <span class="credit"><?php print $data[$i]['media'][$j]['credit']; ?></span> <?php } print $data[$i]['media'][$j]['caption']; ?></a>
+																		</div>
+<?php																} else {?>
 																		<div class="media"><a href="<?php print $data[$i]['media'][$j]['media']; ?>" target="_blank"><?php print $data[$i]['media'][$j]['media']; ?></a></div>
+<?php																}?>
 																	</dd>
 <?php															}
 															} else if($data[$i]['asset']) {?>
 																	<dd>
 <?php																if($data[$i]['asset']['caption'] || $data[$i]['asset']['credit']) {?>
-																		<div class="caption"><?php print $data[$i]['asset']['caption'].($data[$i]['asset']['credit'] ? ($data[$i]['asset']['caption'] ? " -" : "").($data[$i]['asset']['credit']) : ""); ?></div>
-<?php																}?>
+																		<div class="caption">
+																			<a href="<?php print $data[$i]['asset']['media']; ?>" target="_blank"><?php if($data[$i]['asset']['credit']) {?> <span class="credit"><?php print $data[$i]['asset']['credit']; ?></span> <?php } print $data[$i]['asset']['caption']; ?></a>
+																		</div>
+<?php																} else {?>
 																		<div class="media"><a href="<?php print $data[$i]['asset']['media']; ?>" target="_blank"><?php print $data[$i]['asset']['media']; ?></a></div>
+<?php																}?>
 																	</dd>
 <?php														}?>
 															</dl>
@@ -318,7 +341,7 @@ $tags = $timeline['tag'];
 															<dt>행위 주체</dt>
 <?php												if($data[$i]['tag']) {
 														foreach($data[$i]['tag'] as $t) {?>
-															<dd><div class="organize <?php print $t; ?>" data-tag="<?php print $t; ?>"><button class="btn"><?php print $tags[$t]; ?><span class="after"></span></button></div></dd>
+															<dd><div class="organize <?php print $t; ?>" data-tag="<?php print $t; ?>"><button class="btn"><?php print $tags[$t]['name']; ?><span class="after"></span></button><?php if($tags[$t]['description']) {?><div class="org-description"><?php print $tags[$t]['descriptions']; ?></div><?php }?></div></dd>
 <?php													}
 													}?>
 														</dl>
@@ -336,6 +359,7 @@ $tags = $timeline['tag'];
 					</div>
 				</div>
 			</div>
+<?php		include "marsa.php"; ?>
 		</div>
 		<footer id="site-footer">
 			<ul class="nav">
@@ -362,7 +386,7 @@ $tags = $timeline['tag'];
 						<ul>
 							<li class="twitter"><a href="https://twitter.com/share?text=<?php print rawurlencode('http://www.taogi.net/special/sewolho/background/'); ?>" title="트위터 리트윗하기" target="_blank"><span>Twitter</span></a></li>
 							<li class="facebook"><a href="https://facebook.com/sharer.php?u=<?php print rawurlencode('http://www.taogi.net/special/sewolho/background/'); ?>" title="페이스북 좋아요" target="_blank"><span>FaceBook</span></a></li>
-							<li class="github"><a href="" title="GitHub 소스 공유하기" target="_blank"><span>GitHub</span></a></li>
+							<li class="github"><a href="https://github.com/jinbonet/sewolho-background-timeline" title="GitHub 소스 공유하기" target="_blank"><span>GitHub</span></a></li>
 						</ul>
 						<div class="arrow"></div>
 					</div>
@@ -370,7 +394,11 @@ $tags = $timeline['tag'];
 				<li id="creator-content" class="boxinfo">
 					<div class="wrapper">
 						<div class="icon-close"><span>Close</span></div>
-						<ul>
+						<ul class="banner">
+							<li class="jinbonet"><a href="http://www.jinbo.net" target="_blank" title="진보네트워크센터"><img src="./images/jinbonet.svg" alt="진보네트워크센터"></a></li>
+							<li class="opengirok"><a href="http://www.opengirok.or.kr/" target="_blank" title="정보공개센터"><img src="./images/opengirok.svg" alt="정보공개센터"></a></li>
+						</ul>
+						<ul class="worker">
 							<li><label>콘텐츠기획</label>강성국 <a href="http://www.opengirok.or.kr/" target="_blank">정보공개센터</a></li>
 							<li><label>디자인</label>뎡야핑 <a href="http://www.jinbo.net" target="_blank">진보네트워크센터</a></li>
 							<li><label>프로그램</label>황규만 <a href="http://www.jinbo.net" target="_blank">진보네트워크센터</a></li>

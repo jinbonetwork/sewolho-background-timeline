@@ -194,6 +194,8 @@
 					this.options.onShowContent(this.$items[i].items[j].item);
 					break;
 			}
+			this.$el.attr('data-active-item',i);
+			this.$el.attr('data-active-items',j);
 			for(var k=0; k<this.$items.length; k++) {
 				for(var l=0; l<this.$items[k].items.length; l++) {
 					if(k != i || l != j) {
@@ -287,17 +289,15 @@
 				var item = this.$items[i];
 				this.reactiveElement(i);
 				if(item.item.data('initevent') !== true) {
-					item.item.hover(
-						function(e) {
-							if(self.enableEvent !== true) return;
-							self.activeElement(jQuery(this).attr('data-item'));
-							self.currentActivate = jQuery(this).attr('data-item');
-						},
-						function(e) {
-							if(self.enableEvent !== true) return;
-							self.checkReactivateElement(jQuery(this).attr('data-item'));
-						}
-					);
+					item.item.bind('mouseenter.sewoltm click.sewoltm', function(e) {
+						if(self.enableEvent !== true) return;
+						self.activeElement(jQuery(this).attr('data-item'));
+						self.currentActivate = jQuery(this).attr('data-item');
+					});
+					item.item.bind('mouseleave.sewoltm', function(e) {
+						if(self.enableEvent !== true) return;
+						self.checkReactivateElement(jQuery(this).attr('data-item'));
+					});
 					item.item.data('initevent',true);
 				}
 				if(this.$tag && !item.item.hasClass(self.$tag)) {
@@ -313,21 +313,19 @@
 						} else {
 							item.items[j].item.removeClass('hidden');
 							if(item.items[j].item.data('hoverevent') !== true) {
-								item.items[j].title.hover(
-									function(e) {
-										if(self.enableEvent !== true) return;
-										self.hoverContentTitle(jQuery(this).attr('data-item'),jQuery(this).attr('data-items'));
-										if(self.$el.data('mode') == 'full') {
-											self.showContent(jQuery(this).attr('data-item'),jQuery(this).attr('data-items'),self.options.showContentAnimate);
-										}
-									},
-									function(e) {
-										if(self.enableEvent !== true) return;
-										if(!self.$items[jQuery(this).attr('data-item')].items[jQuery(this).attr('data-items')].item.hasClass('active')) {
-											self.unhoverContentTitle(jQuery(this).attr('data-item'),jQuery(this).attr('data-items'));
-										}
+								item.items[j].title.bind('mouseenter.sewoltm touchstart.sewoltm', function(e) {
+									if(self.enableEvent !== true) return;
+									self.hoverContentTitle(jQuery(this).attr('data-item'),jQuery(this).attr('data-items'));
+									if(self.$el.data('mode') == 'full') {
+										self.showContent(jQuery(this).attr('data-item'),jQuery(this).attr('data-items'),self.options.showContentAnimate);
 									}
-								);
+								});
+								item.items[j].title.bind('mouseleave.sewoltm', function(e) {
+									if(self.enableEvent !== true) return;
+									if(!self.$items[jQuery(this).attr('data-item')].items[jQuery(this).attr('data-items')].item.hasClass('active')) {
+										self.unhoverContentTitle(jQuery(this).attr('data-item'),jQuery(this).attr('data-items'));
+									}
+								});
 								item.items[j].item.data('hoverevent',true);
 							}
 							if(this.$el.data('mode') == 'full') {
@@ -361,13 +359,20 @@
 			for(var i=0; i<this.$items.length; i++) {
 				var item = this.$items[i];
 				if(item.item.data('initevent') === true) {
-					item.item.off('hover');
+					item.item.unbind('mouseenter.sewoltm');
+					item.item.unbind('mouseleave.sewoltm');
+					item.item.unbind('click.sewoltm');
 					item.item.data('initevent',false);
 				}
 				for(var j=0; j < item.items.length; j++) {
 					if(item.items[j].item.data('initevent') === true) {
-						item.items[j].title.off('hover');
+						item.items[j].title.unbind('mouseenter.sewoltm');
+						item.items[j].title.unbind('touchstart.sewoltm');
 						item.items[j].item.data('initevent',false);
+					}
+					if(item.items[j].item.data('clickevent') === true) {
+						item.items[j].title.unbind('click.sewoltm');
+						item.items[j].item.data('clickevent',false);
 					}
 				}
 			}

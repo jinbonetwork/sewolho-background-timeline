@@ -295,17 +295,39 @@ html, body {
 #frame #site-footer #share-content .wrapper ul li a span {
 	display: none;
 }
+#frame #site-footer #creator-content .wrapper {
+	height: 135px;
+	padding-top: 25px;
+}
 #frame #site-footer #creator-content .wrapper ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 	font-size: 0.8em;
 }
-#frame #site-footer #creator-content .wrapper ul li {
+#frame #site-footer #creator-content .wrapper ul.banner {
+	width: 90%;
+	margin-left: 8px;
+	margin-bottom: 10px;
+	display: table;
+}
+#frame #site-footer #creator-content .wrapper ul.banner li {
+	display: table-cell;
+	width: 50%;
+	text-align: center;
+	vertical-align: middle;
+}
+#frame #site-footer #creator-content .wrapper ul.banner li a {
+}
+#frame #site-footer #creator-content .wrapper ul.banner li img {
+	width: 90%;
+	border: 0;
+}
+#frame #site-footer #creator-content .wrapper ul.worker li {
 	margin: 0;
 	padding: 0 0 6px 0;
 }
-#frame #site-footer #creator-content .wrapper ul li label {
+#frame #site-footer #creator-content .wrapper ul.worker li label {
 	display: inline-block;
 	text-align: right;
 	width: 80px;
@@ -314,11 +336,11 @@ html, body {
 	letter-spacing: -0.05em;
 	font-weight: bold;
 }
-#frame #site-footer #creator-content .wrapper ul li a {
+#frame #site-footer #creator-content .wrapper ul.worker li a {
 	color: #fff;
 	text-decoration: none;
 }
-#frame #site-footer #creator-content .wrapper ul li a:hover {
+#frame #site-footer #creator-content .wrapper ul.worker li a:hover {
 	text-decoration: underline;
 }
 

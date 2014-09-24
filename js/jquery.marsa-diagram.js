@@ -33,7 +33,8 @@
 		stroke : { color : '#fff', hover : '#FBF59B' },
 		background: '',
 		effect: 'opacity',
-		onBefore: function() { return false }
+		onBefore: function() { return false },
+		onAfter: function() { return false }
 	},
 
 	jQuery.MarsaDiagram.prototype = {
@@ -55,6 +56,10 @@
 			// support css 3d transforms && css transitions && Modernizr.csstransformspreserve3d
 			this.support = Modernizr.csstransitions && Modernizr.csstransforms3d && Modernizr.csstransformspreserve3d;
 
+			this.$elWidth = jQuery(this.$el).width();
+			jQuery(this.$el).height(this.$el.parent().height());
+			this.$elHeight = jQuery(this.$el).height();
+
 			this.$el.addClass('marsa-diagram');
 			this.root = this.$el.find(this.options.root);
 			this.tree = {};
@@ -68,12 +73,25 @@
 				self.tree[id].target = item.attr('data-tree').split(' ');
 				self.tree[id].diagram = {};
 				for(var j=0; j < self.tree[id].target.length; j++) {
+					var orgin = jQuery('#'+self.tree[id].target[j]+'.element').attr('data-orgin');
+					orgin = (orgin ? " " : "")+id; 
+					jQuery('#'+self.tree[id].target[j]+'.element').attr('data-orgin',orgin);
 					var svg = jQuery('<div id="'+id+'_'+self.tree[id].target[j]+'" class="connector '+id+' '+self.tree[id].target[j]+'"><svg width="0" height="0"><line class="straight" x1="0" y1="0" x2="0" y2="0" stroke="'+self.options.stroke.color+'" stroke-width="2" stroke-dasharray="2,2" fill="currentColor"></line><line class="oblique" x1="0" y1="0" x2="0" y2="0" stroke="'+self.options.stroke.color+'" stroke-width="2" stroke-dasharray="2,2" fill="currentColor"></line></svg></div>');
 					self.remove_effect(svg);
 					svg.appendTo(self.$wel);
 					self.tree[id].diagram[self.tree[id].target[j]] = svg;
 				}
 			});
+
+			this.rLeft = parseInt( (this.$elWidth - this.root.width()) / 2 );
+			if(this.$elWidth < this.$elHeight)
+				this.rTop = parseInt( this.$elHeight * 0.05 );
+			else
+				this.rTop = parseInt( this.$elHeight * 0.13 );
+			this.root.css( {
+				'left': this.rLeft + 'px',
+				'top': this.rTop + 'px'
+			} );
 
 			var $items = this.$el.find('.element');
             $items.each(function(i) {
@@ -95,9 +113,6 @@
 					this.$background = jQuery('<img src="'+this.options.background+'" class="background" />');
 					this.$background.prependTo(self.$el);
 				}
-				this.$elWidth = jQuery(this.$el).width();
-				jQuery(this.$el).height(this.$el.parent().height());
-				this.$elHeight = jQuery(this.$el).height();
 				var hiddenImg = new Image();
                 hiddenImg.onload = function() {
 					var bl = parseInt((self.$el.outerWidth() - this.width) / 2);
@@ -125,7 +140,10 @@
 			jQuery(this.$el).height(this.$el.parent().height());
 			this.$elHeight = jQuery(this.$el).height();
 			this.rLeft = parseInt( (this.$elWidth - this.root.width()) / 2 );
-			this.rTop = parseInt( this.$elHeight * 0.13 );
+			if(this.$elWidth < this.$elHeight)
+				this.rTop = parseInt( this.$elHeight * 0.05 );
+			else
+				this.rTop = parseInt( this.$elHeight * 0.13 );
 			this.root.css( {
 				'left': this.rLeft + 'px',
 				'top': this.rTop + 'px'
@@ -660,6 +678,27 @@
 				function() {
 				}
 			);
+
+			for(var i=0; i<this.$items.length; i++) {
+				this.$items[i].item.bind('mouseenter.marsado touchstart.marsado', function(e) {
+					if(self.enableEvent == true) {
+						var id = jQuery(this).attr('id');
+						var orgin = jQuery(this).attr('data-orgin').split(' ');
+						if(orgin.length > 0) {
+							self.root.find('.point').removeClass('hover');
+							self.$el.find('.element').removeClass('active');
+							self.$el.find('.connector').removeClass('active').find('line').attr('stroke',self.options.stroke.color);
+							for(var j=0; j<orgin.length; j++) {
+								self.tree[orgin[j]].item.addClass('hover');
+							}
+						}
+						jQuery(this).addClass('active');
+						self.$el.find('.connector.'+id).addClass('active').find('line').attr('stroke',self.options.stroke.hover);
+					}
+				});
+			}
+
+			this.options.onAfter();
 
 			$window.bind('resize.marsado',function(e) {
                 if(self.enableEvent === true) {
