@@ -96,7 +96,7 @@
 * 폴더: data/timeline.json
 * json 형태로 만들어졌습니다. 기본 json 포멧은 진보넷의 프로젝트인 '[따오기][repository-taogi]'의 기본 데이터 Json 포멧을 계승합니다.
 * 내용을 수정하고 싶으신 분은 이 파일을 수정하시면 됩니다.
-
+* data/timeline.json 내용은 [정보공유라이선스 2.0: 영리금지 http://freeuse.or.kr/htm/main1_32.htm][license-freeuse] 라이선스를 따릅니다.
 
 [jinbonetwork]:						http://www.jinbo.net
 [opengirok]:						http://www.opengirok.or.kr
@@ -109,6 +109,7 @@
 [license-mit]:						http://opensource.org/licenses/MIT
 [license-codrops]:					http://tympanus.net/codrops/licensing/
 [license-lin]:						http://dreamerslab.com/
+[license-freeuse]:					http://freeuse.or.kr/htm/main1_32.htm
 
 Version History
 ---------------
