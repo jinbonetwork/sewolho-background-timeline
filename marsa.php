@@ -1,5 +1,6 @@
 			<div id="marsa_structure" class="infograph">
 				<div class="wrapper">
+					<div class="icon-close"><span>닫기</span></div>
 					<div id="marsa" class="title org greenbox">
 						<h5>한국해양구조협회</h5>
 						<div>

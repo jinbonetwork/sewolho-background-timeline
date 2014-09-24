@@ -650,6 +650,45 @@
 	display: block;
 }
 
+#marsa_structure .wrapper .icon-close {
+	position: absolute;
+	z-index: 1000000;
+	right: 15px;
+	top: 15px;
+	width: 30px;
+	height: 30px;
+	border: 1px solid #fff;
+	border-radius: 15px;
+	overflow: hidden;
+	cursor: pointer;
+	background: #2C445A;
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	-o-transition: all 0.5s;
+}
+#marsa_structure .wrapper .icon-close:after {
+	position: absolute;
+	z-index: 1000001;
+	left: 8px;
+	top: 7px;
+	width: 30px;
+	content: '\e619';
+	font-size: 15px;
+	color: #fff;
+}
+#marsa_structure .wrapper .icon-close:hover {
+	background: FEF59C;
+	border-color: #FFF200;
+}
+#marsa_structure .wrapper .icon-close:hover:after {
+	color: #FFF200;
+}
+#marsa_structure .wrapper .icon-close span {
+	display: none;
+}
+
 #marsa_structure .org {
 	cursor: pointer;
 }

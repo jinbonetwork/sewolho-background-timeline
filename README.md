@@ -66,27 +66,30 @@
     * 각 chapter는 타임라인 형식으로 구성되어 있습니다. 이 각각의 타임라인들을 실제로 콘트롤하는 jquery plugin 입니다.
     * 이 소스 역시 출처와 라이센스만 명시한다면 누구나 배포, 재수정 배포할 수 있습니다.
 
-3.  jquery.marsa-diagram.js
+3.  marsa.php
+    * 폴더: marsa.php
+    * '한국해양구조협회'에 참여하고 있는 정부부처와 기관들의 관계도를 페이지입니다.
+
+4.  jquery.marsa-diagram.js
     * 폴더: js/jquery.marsa-diagram.js, css/marsa.diagram.css
-    * 세월호는 왜 하단 메뉴에 '한국해양구조협회 관계도' 메뉴가 있습니다. 이 내용은 '한국해양구조협회'에 참여하고 있는 국내 기관들의 관계도를 보여줍니다.
-    * jquery.marsa-diagram은 이 관계도를 responsive 하게 보여주기 위해 만들어진 jquery plugin 입니다.
+    * jquery.marsa-diagram은 marsa.php에 있는 관계도를 responsive 하게 보여주기 위해 만들어진 jquery plugin 입니다.
     * 이 소스는 '한국해양구조협회'에 특화되어 있어 범용성이 없지만, 누구나 가져다 범용적으로 개조하여 출처표기 없이 새로 배포할 수 있습니다.
     
-4.  app.js
+5.  app.js
     * 폴더: js/app.js
     * 위에서 설명한 3개의 jquery plugin들을 실제로 적용하는 javascript 입니다.
     * 가장 중요한 역할은 각 타임라인이나 '한국해양구조협회' 관계도에 등장하는 정부부처, 기관들이 저희가 구분한 4개의 chapter 영역에서 구체적으로 어떤 연관이 있는지 한번에 보여주는 기능입니다.
     * 하단 footer의 메뉴들에 대한 동작을 콘트롤합니다.
  
-5.  layout.css
+6.  layout.css
     * 폴더: css/layout.css
     * '세월호는 왜' 사이트의 기본 레이아웃과 하단 footer의 버튼에 대한 디자인입니다.
 
-6.  style.css
+7.  style.css
     * 폴더: css/style.css
     * 전체 콘텐츠에 대한 스타일시트입니다.
  
-7.  icomoon
+8.  icomoon
     * 폴더: css/fonts
     * 이 사이트에서 사용하는 이미지 폰트입니다. icomoon 사이트의 무료 서비스를 이용하여 만들었습니다.
 

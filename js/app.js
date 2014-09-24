@@ -229,6 +229,12 @@ jQuery(document).ready(function() {
 		setTimeout(function() {
 			jQuery('#marsa_structure .wrapper').addClass('active');
 			jQuery('#marsa_structure .wrapper').bind(transitionEnd, function(e) {
+				if(jQuery('#site-main #marsa_structure .icon-close').data('clickEvent') !== true) {
+					jQuery('#site-main #marsa_structure .icon-close').click(function(e) {
+						hide_marsa_structure();
+					});
+					jQuery('#site-main #marsa_structure .icon-close').data('clickEvent',true);
+				}
 				jQuery('#marsa_structure').marsado('init');
 				if(!jQuery(this).hasClass('perfect-scroll')) {
 					jQuery(this).addClass('perfect-scroll');
@@ -349,6 +355,11 @@ jQuery(document).ready(function() {
 			hide_marsa_structure();
 		}
 	});
+
+	jQuery('#site-footer #go-marsa .icon-close').click(function(e) {
+		hide_marsa_structure();
+	});
+
 	jQuery('#site-footer .nav .box-info').bind('click', function(e) {
 		var id = jQuery(this).attr('for');
 		var obj = jQuery('#site-footer .site-info #'+jQuery(this).attr('for'));
