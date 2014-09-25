@@ -181,18 +181,16 @@
       * 타임라인의 Event(click,hover,resize etc..)를 재활성화시킨다.
 
 
-[jinbonetwork]:						http://www.jinbo.net
-[opengirok]:						http://www.opengirok.or.kr
-
-[repository-taogi]:					https://github.com/jinbonet/taogi-timeline
-[repository-bookblock]:				https://github.com/codrops/BookBlock
-[repository-perfect-scrollbar]:		https://github.com/noraesae/perfect-scrollbar
-[repository-actual]:				https://github.com/dreamerslab/jquery.actual
-
-[license-mit]:						http://opensource.org/licenses/MIT
-[license-codrops]:					http://tympanus.net/codrops/licensing/
-[license-lin]:						http://dreamerslab.com/
-[license-freeuse]:					http://freeuse.or.kr/htm/main1_32.htm
+[jinbonetwork]: http://www.jinbo.net
+[opengirok]: http://www.opengirok.or.kr
+[repository-taogi]: https://github.com/jinbonet/taogi-timeline
+[repository-bookblock]: https://github.com/codrops/BookBlock
+[repository-perfect-scrollbar]: https://github.com/noraesae/perfect-scrollbar
+[repository-actual]: https://github.com/dreamerslab/jquery.actual
+[license-mit]: http://opensource.org/licenses/MIT
+[license-codrops]: http://tympanus.net/codrops/licensing/
+[license-lin]: http://dreamerslab.com/
+[license-freeuse]: http://freeuse.or.kr/htm/main1_32.htm
 
 Version History
 ---------------
