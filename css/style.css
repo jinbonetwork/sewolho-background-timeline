@@ -140,7 +140,7 @@
 	margin: 0;
 	padding: 48px 10%;
 	font-family: "함초롱바탕", "NanumMyeongjo", serif;
-	font-size: 0.95em;
+	font-size: 1em;
 	color: #202020;
 	line-height: 1.8em;
 	text-align: justify;
@@ -151,15 +151,14 @@
 	border-bottom: 1px solid #2C445A;
 }
 .sewol-timeline .timeline-item .item-content .text .text-wrap .description div.inner a {
-	background: #2C445A;
 	color: #fff;
 	padding: 3px;
-	font-weight: normal;
+	font-weight: bold;
 	text-decoration: none;
+	border-bottom: 1px dashed;
 }
 .sewol-timeline .timeline-item .item-content .text .text-wrap .description div.inner a:hover {
-	background: #FEF59C;
-	color: #2C445A;
+	color: #FEF59C;
 }
 .sewol-timeline .timeline-item .item-content .text .text-wrap .description div.inner sup {
 	vertical-align: top;
@@ -232,7 +231,7 @@
 }
 .sewol-timeline .timeline-item .item-content .text .text-wrap .description div.inner dl.reference dd span.credit {
 	font-size: 0.9em;
-	padding: 4px 4px 3px 4px;
+	padding: 1px 4px;
 	background: #2C445A;
 	color: #FEF59C;
 }
@@ -722,14 +721,14 @@
 	letter-spacing: -0.05em;
 	vertical-align: top;
 	margin: 0 0 30px 0;
-	padding: 8px 0 0 73px;
+	padding: 8px 0 0 90px;
 }
 #marsa_structure #marsa h5:before {
 	position: absolute;
 	z-index: 5;
 	left: 0;
 	top: 0;
-	font-size: 1.55em;
+	font-size: 2em;
 	content: '\e612';
 	padding-right: 10px;
 }

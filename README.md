@@ -34,7 +34,7 @@
 기술 설명(Document)
 ===================
 
-1. 사용된 jquery plugin 오픈소스
+1.  사용된 jquery plugin 오픈소스
 --------------------------------
 
 세월호는 왜는 PHP 5.2와 jquery로 동작하며, 외부 라이브러리들을 일부 사용하고 있습니다. 사용 중인 라이브러리들의 목록과 라이선스, 저장 위치는 다음과 같습니다.
@@ -45,8 +45,8 @@
 | [perfect-scrollbar][repository-perfect-scrollbar]     | [MIT][license-mit]                     | fsbb/perfect-scrollbar                            |
 | [actual][repository-actual]                           | [Copyright 2011, Ben Lin][license-lin] | contrib/jquery.actual                             |
 
-2. IE8 지원여부
----------------
+2.  브라우져 지원
+-----------------
 
 '세월호는 왜' 프로젝트는 IE8 및 이하 버젼 IE 브라어져를 지원하지 않습니다. HTML5 를 지원하는 브라우져에서만 정상동작합니다.
 
@@ -62,61 +62,15 @@
     * four-slide 보드와 bookblock 모드로 자유롭게 오갈 수 있도록 만들어졌습니다.
     * 각 모드별로 auto-scroll 문제를 해결하기 위해 또 다른 jquery plugin perfect-scrollbar를 사용합니다.
     * 이 소스는 출처와 라이센스만 명시한다면 누구나 재배포, 수정배포가 가능합니다.
-    * 사용법
-      1. 기본 사용법: $('element').fsbb(options);
-         * 옵션
-           {
-              mode: 'cover(표지모드) / quart(전체보기)',
-              theme: 'sewol' (테마),
-              tearse_speed : '1s' (transition animate speed),
-              title: ''(표지 타이틀 element),
-              title_pos: {'left' : 0(표지 타이틀 left position), 'top' : 0(표지 타이틀 top position) },
-              background: ''(바탕 이미지),
-              useCoverAniate: true(표지모드일때 animate 활성 옵션),
-              bb_before: function(page) {} (four slide mode에서 bookblock 모드로 전환될때 onBefore Event function. argument: 활성화되는 chapter번호 1~4),
-              bb_after: function(page) {} (four slide mode에서 bookblock 모드로 전환될때 onAfter Event function. argument: 활성화되는 chapter번호 1~4)
-			}
-      2. method
-         * init(options)
-           * $('element').fsbb('init',{options});
-           * 위 기본 옵션과 동일
-         * bb_activate(options)
-           * $('element').fsbb('bb_activate',{options});
-           * 옵션
-             {
-				chapter: 1(활성화되는 chapter 번호 1~4),
-				bookblock_after: function() {} (bookblock 모드로 전환된후 afterEvent)
-             }
+    * 상세한 메뉴얼을 하단 5번에서
     * License: MIT License
 
 2.  jquery.sewol-timeline.js
     * 폴더: js/jquery.sewol-timeline.js, css/sewol.timeline.css
     * 각 chapter는 타임라인 형식으로 구성되어 있습니다. 이 각각의 타임라인들을 실제로 콘트롤하는 jquery plugin 입니다.
     * 이 소스 역시 출처와 라이센스만 명시한다면 누구나 배포, 재수정 배포할 수 있습니다.
-    * 사용법
-      1. 기본 사용법: $('element').sewoltm(options);
-         * 옵션
-           {
-              theme: 'sewol' (테마),
-              mode: 'full(전체화면 사용. 상세내용 보기를 오른쪽으로) / overlay(부분화면 사용. 상세 내용보기를 overlay형태로 보기)',
-              tag: ''(특정 tag를 가지고 있는  타임라인 항목만 보여줌),
-              showContentAnimate: 'opacity'(타임라인의 상세내용을 보여줄때 활용할 animation effect. default: opacity),
-              eventHandle : 'true'(타임라인의 event handler(click/hover etc..) 를 활성화할지 여부),
-              onBefore: function() {}(타임라인의 활성화되기 전 beforeEvent),
-              onShowContent: function() {}(타임라인의 개별 항목이 상세보기할때 beforeEvent)
-           }
-      2. method
-         * init(options)
-           * $('element').sewoltm('init',{options});
-           * 위 기본 옵션과 동일
-         * activeElement(idx)
-           * $('element').sewoltm('activeElement',i);
-         * showContent(idx)
-           * $('element').sewoltm('activeElement',i,j);
-         * stop()
-           * $('element').sewoltm('stop');
-         * start()
-           * $('element').sewoltm('start',{options});
+    * 상세한 메뉴얼을 하단 6번에서
+    * License: MIT License
 
 3.  marsa.php
     * 폴더: marsa.php
@@ -148,10 +102,76 @@
 4. 타임라인 데이터
 ------------------
 
-* 폴더: data/timeline.json
-* json 형태로 만들어졌습니다. 기본 json 포멧은 진보넷의 프로젝트인 '[따오기][repository-taogi]'의 기본 데이터 Json 포멧을 계승합니다.
-* 내용을 수정하고 싶으신 분은 이 파일을 수정하시면 됩니다.
-* data/timeline.json 내용은 [정보공유라이선스 2.0: 영리금지 http://freeuse.or.kr/htm/main1_32.htm][license-freeuse] 라이선스를 따릅니다.
+*  폴더: data/timeline.json
+*  json 형태로 만들어졌습니다. 기본 json 포멧은 진보넷의 프로젝트인 '[따오기][repository-taogi]'의 기본 데이터 Json 포멧을 계승합니다.
+*  내용을 수정하고 싶으신 분은 이 파일을 수정하시면 됩니다.
+*  data/timeline.json 내용은 [정보공유라이선스 2.0: 영리금지 http://freeuse.or.kr/htm/main1_32.htm][license-freeuse] 라이선스를 따릅니다.
+
+5.  four-slide-book-block 사용법
+-------------------------------
+
+1.  기본 사용법: $('element').fsbb(options);
+    *  옵션
+
+       {
+          mode: 'cover(표지모드) / quart(전체보기)',
+          theme: 'sewol' (테마),
+          tearse_speed : '1s' (transition animate speed),
+          title: ''(표지 타이틀 element),
+          title_pos: {'left' : 0(표지 타이틀 left position), 'top' : 0(표지 타이틀 top position) },
+          background: ''(바탕 이미지),
+          useCoverAniate: true(표지모드일때 animate 활성 옵션),
+          bb_before: function(page) {} (four slide mode에서 bookblock 모드로 전환될때 onBefore Event function. argument: 활성화되는 chapter번호 1~4),
+          bb_after: function(page) {} (four slide mode에서 bookblock 모드로 전환될때 onAfter Event function. argument: 활성화되는 chapter번호 1~4)
+       }
+
+2.  method
+    *  init(options)
+       * $('element').fsbb('init',{options});
+       * 위 기본 옵션과 동일
+       * 주로 중간에 options 을 변경할때 사용.
+    *  bb_activate(options)
+       * $('element').fsbb('bb_activate',{options});
+       * 옵션
+
+         {
+             chapter: 1(활성화되는 chapter 번호 1~4),
+             bookblock_after: function() {} (bookblock 모드로 전환된후 afterEvent)
+         }
+       * Chapter(options.chapter)를 bookblock 모드로 전환시킨다.
+
+6.  jquery.sewol-timeline.js 사용법
+-----------------------------------
+
+1.  기본 사용법: $('element').sewoltm(options);
+    *  옵션
+       {
+          theme: 'sewol' (테마),
+          mode: 'full(전체화면 사용. 상세내용 보기를 오른쪽으로) / overlay(부분화면 사용. 상세 내용보기를 overlay형태로 보기)',
+          tag: ''(특정 tag를 가지고 있는  타임라인 항목만 보여줌),
+          showContentAnimate: 'opacity'(타임라인의 상세내용을 보여줄때 활용할 animation effect. default: opacity),
+          eventHandle : 'true'(타임라인의 event handler(click/hover etc..) 를 활성화할지 여부),
+          onBefore: function() {}(타임라인의 활성화되기 전 beforeEvent),
+          onShowContent: function() {}(타임라인의 개별 항목이 상세보기할때 beforeEvent)
+       }
+2.  method
+    *  init(options)
+       * $('element').sewoltm('init',{options});
+       * 위 기본 옵션과 동일
+       * 주로 중간에 options 을 변경할때 사용.
+    *  activeElement(idx)
+       * $('element').sewoltm('activeElement',i);
+       * 타임라인의 idx번째 항목을 활성화시킨다.
+    *  showContent(idx)
+       * $('element').sewoltm('activeElement',i,j);
+       * 타임라인의 i번째 항목의 j번째 내용을 보여준다.
+    *  stop()
+       * $('element').sewoltm('stop');
+       * 타임라인의 Event(click,hover,resize etc..)를 비활성화시킨다.
+    *  start()
+       * $('element').sewoltm('start',{options});
+       * 타임라인의 Event(click,hover,resize etc..)를 재활성화시킨다.
+
 
 [jinbonetwork]:						http://www.jinbo.net
 [opengirok]:						http://www.opengirok.or.kr
