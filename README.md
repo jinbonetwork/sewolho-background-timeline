@@ -110,67 +110,75 @@
 5.  four-slide-book-block 사용법
 -------------------------------
 
-1.  기본 사용법: $('element').fsbb(options);
-    *  옵션
+*  기본 사용법: $('element').fsbb(options);
+   *  옵션
 
-       {
-          mode: 'cover(표지모드) / quart(전체보기)',
-          theme: 'sewol' (테마),
-          tearse_speed : '1s' (transition animate speed),
-          title: ''(표지 타이틀 element),
-          title_pos: {'left' : 0(표지 타이틀 left position), 'top' : 0(표지 타이틀 top position) },
-          background: ''(바탕 이미지),
-          useCoverAniate: true(표지모드일때 animate 활성 옵션),
-          bb_before: function(page) {} (four slide mode에서 bookblock 모드로 전환될때 onBefore Event function. argument: 활성화되는 chapter번호 1~4),
-          bb_after: function(page) {} (four slide mode에서 bookblock 모드로 전환될때 onAfter Event function. argument: 활성화되는 chapter번호 1~4)
-       }
+      ```
+      {
+         mode: 'cover(표지모드) / quart(전체보기)',
+         theme: 'sewol' (테마),
+         tearse_speed : '1s' (transition animate speed),
+         title: ''(표지 타이틀 element),
+         title_pos: {'left' : 0(표지 타이틀 left position), 'top' : 0(표지 타이틀 top position) },
+         background: ''(바탕 이미지),
+         useCoverAniate: true(표지모드일때 animate 활성 옵션),
+         bb_before: function(page) {} (four slide mode에서 bookblock 모드로 전환될때 onBefore Event function. argument: 활성화되는 chapter번호 1~4),
+         bb_after: function(page) {} (four slide mode에서 bookblock 모드로 전환될때 onAfter Event function. argument: 활성화되는 chapter번호 1~4)
+      }
+      ```
 
-2.  method
-    *  init(options)
-       * $('element').fsbb('init',{options});
-       * 위 기본 옵션과 동일
-       * 주로 중간에 options 을 변경할때 사용.
-    *  bb_activate(options)
-       * $('element').fsbb('bb_activate',{options});
-       * 옵션
+*  method
+   *  init(options)
+      * $('element').fsbb('init',{options});
+      * 위 기본 옵션과 동일
+      * 주로 중간에 options 을 변경할때 사용.
+   *  bb_activate(options)
+      * $('element').fsbb('bb_activate',{options});
+      * Chapter(options.chapter)를 bookblock 모드로 전환시킨다.
+      * 옵션
 
-         {
-             chapter: 1(활성화되는 chapter 번호 1~4),
-             bookblock_after: function() {} (bookblock 모드로 전환된후 afterEvent)
-         }
-       * Chapter(options.chapter)를 bookblock 모드로 전환시킨다.
+        ```
+        {
+            chapter: 1(활성화되는 chapter 번호 1~4),
+            bookblock_after: function() {} (bookblock 모드로 전환된후 afterEvent)
+        }
+        ```
 
 6.  jquery.sewol-timeline.js 사용법
 -----------------------------------
 
-1.  기본 사용법: $('element').sewoltm(options);
-    *  옵션
-       {
-          theme: 'sewol' (테마),
-          mode: 'full(전체화면 사용. 상세내용 보기를 오른쪽으로) / overlay(부분화면 사용. 상세 내용보기를 overlay형태로 보기)',
-          tag: ''(특정 tag를 가지고 있는  타임라인 항목만 보여줌),
-          showContentAnimate: 'opacity'(타임라인의 상세내용을 보여줄때 활용할 animation effect. default: opacity),
-          eventHandle : 'true'(타임라인의 event handler(click/hover etc..) 를 활성화할지 여부),
-          onBefore: function() {}(타임라인의 활성화되기 전 beforeEvent),
-          onShowContent: function() {}(타임라인의 개별 항목이 상세보기할때 beforeEvent)
-       }
-2.  method
-    *  init(options)
-       * $('element').sewoltm('init',{options});
-       * 위 기본 옵션과 동일
-       * 주로 중간에 options 을 변경할때 사용.
-    *  activeElement(idx)
-       * $('element').sewoltm('activeElement',i);
-       * 타임라인의 idx번째 항목을 활성화시킨다.
-    *  showContent(idx)
-       * $('element').sewoltm('activeElement',i,j);
-       * 타임라인의 i번째 항목의 j번째 내용을 보여준다.
-    *  stop()
-       * $('element').sewoltm('stop');
-       * 타임라인의 Event(click,hover,resize etc..)를 비활성화시킨다.
-    *  start()
-       * $('element').sewoltm('start',{options});
-       * 타임라인의 Event(click,hover,resize etc..)를 재활성화시킨다.
+*  기본 사용법: $('element').sewoltm(options);
+   *  옵션
+
+      ```
+      {
+         theme: 'sewol' (테마),
+         mode: 'full(전체화면 사용. 상세내용 보기를 오른쪽으로) / overlay(부분화면 사용. 상세 내용보기를 overlay형태로 보기)',
+         tag: ''(특정 tag를 가지고 있는  타임라인 항목만 보여줌),
+         showContentAnimate: 'opacity'(타임라인의 상세내용을 보여줄때 활용할 animation effect. default: opacity),
+         eventHandle : 'true'(타임라인의 event handler(click/hover etc..) 를 활성화할지 여부),
+         onBefore: function() {}(타임라인의 활성화되기 전 beforeEvent),
+         onShowContent: function() {}(타임라인의 개별 항목이 상세보기할때 beforeEvent)
+      }
+      ```
+
+*  method
+   *  init(options)
+      * $('element').sewoltm('init',{options});
+      * 위 기본 옵션과 동일
+      * 주로 중간에 options 을 변경할때 사용.
+   *  activeElement(idx)
+      * $('element').sewoltm('activeElement',i);
+      * 타임라인의 idx번째 항목을 활성화시킨다.
+   *  showContent(idx)
+      * $('element').sewoltm('activeElement',i,j);
+      * 타임라인의 i번째 항목의 j번째 내용을 보여준다.
+   *  stop()
+      * $('element').sewoltm('stop');
+      * 타임라인의 Event(click,hover,resize etc..)를 비활성화시킨다.
+   *  start()
+      * $('element').sewoltm('start',{options});
+      * 타임라인의 Event(click,hover,resize etc..)를 재활성화시킨다.
 
 
 [jinbonetwork]:						http://www.jinbo.net

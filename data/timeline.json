@@ -533,7 +533,13 @@
 				"headline" : "해양수산부, 청와대에 보고 \"현재까지 인명피해 없음\"",
 				"summary" : "",
 				"unique_id" : "28",
-				"text" : "<figure><img src=data/files/20140416-mof-report_1.png><figcaption>해수부, 세월호 보고(1보) 중</figcaption></figure>"
+				"text" : "<figure><img src=data/files/20140416-mof-report_1.png><figcaption>해수부, 세월호 보고(1보) 중</figcaption></figure>해수부는 이후에도 세 차례<sub>11시, 11시 20분</sub>에 걸쳐 인명 피해가 없다고 보고했다. 나중에 언론에 의해 문제가 되자 해수부는  16일 상황보고서는 \"현장에서 공식 확인ㆍ보고된 인명피해 없다\"는 의미라는 해명을 하기도 했다.",
+				"asset" : {
+					"media" : "http://www.korea.kr/policy/actuallyView.do?newsId=148778704",
+					"credit" : "정책브리핑",
+					"caption" : "16일 상황보고서, \"현장에서 공식 확인ㆍ보고된 인명피해 없다\"는 의미",
+					"thumbnail" : ""
+				}
 			},
 			{
 				"startDate" : "2014.4.16 10:17",
