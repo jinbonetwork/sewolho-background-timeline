@@ -61,6 +61,7 @@
 .four-slide .item-wrapper .item-inner .summary {
 	font-weight: bold;
 	line-height: 150%;
+	text-align: justify;
 }
 
 .four-slide .item-wrapper.hover svg path,
@@ -82,12 +83,14 @@
 	padding: 0 0 10px 0;
 }
 .bb-bookblock .item-wrapper .summary {
-	color: #000;
+	color: #fff;
 	line-height: 150%;
+	max-width: 40%;
+	text-align: justify;
 }
 .bb-bookblock .item-wrapper .content {
 	line-height: 150%;
-	padding-top: 3%;
+	padding-top: 2%;
 }
 .bb-bookblock .item-wrapper .item-content {
 }
@@ -984,11 +987,17 @@
 		margin: 0 !important;
 		padding: 15px  0 15px 0 !important;
 	}
+	.bb-bookblock .item-wrapper .summary {
+		max-width: none;
+	}
 	.sewol.quart .four-slide .four-item .content {
 		max-height: none;
 	}
 	.bb-bookblock .item-wrapper .item-inner {
 		padding: 30px 7% 7% 7%;
+	}
+	.bb-bookblock .item-wrapper .content {
+		padding-top: 5%;
 	}
 	.sewol.quart .four-slide .four-item.chapter1-item .content,
 	.sewol.quart .four-slide .four-item.chapter2-item .content {

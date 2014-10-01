@@ -35,19 +35,24 @@
 * 프로그램: 진보네트워크센터 황규만
 * 연락처: truesig@jinbo.net
 
-사용 설명
-=========
+사용 설명(Manual)
+=================
 
 * PC를 통해 타임라인을 보시는 분들은 키보드의 화살표키를 사용하실 수 있습니다. 위,왼쪽 화살표키는 이전 내용으로, 아래,오른쪽 화살표키는 다음 내용으로 넘어갑니다.
 * PC를 통해 타임라인을 보시는 분들은 키보드의 페이지업/다운 키를 사용하실 수 있습니다. PageUp은 이전 Chapter로, PageDown은 다음 Chapter로 넘어갑니다.
+* 모바일을 통해 보시는 분들은 왼쪽 하단 노란색 메뉴버튼을 활용하시면 다양한 내용을 보실 수 있습니다.
 * 각 내용중에 행위 주체라는 버튼이 있습니다. 해당 사건과 관련된 주요 담당부처나 법령을 표시하고 있습니다. 이 버튼을 클릭하시면, 해당 부처나 법령이 연관된 모든 사건들을 4분할 화면에서 일목요연하게 보실 수 있습니다.
 
 
 기술 설명(Document)
 ===================
 
-1.  사용된 jquery plugin 오픈소스
---------------------------------
+1.  Required
+------------
+    * PHP 5.0 이상. PHP는 특별한 역할을 하지 않고 JSon 파일을 읽는대만 필요하기 때문에 PHP Version에 크게 좌우되지 않습니다. DB도 Json 피일을 사용합니다. 따라서 MySQL같은 별도의 DBM이 필요없습니다. 따라서 다른 언어로 포팅하는데 크게 문제는 없을 것입니다.
+
+2.  사용된 jquery plugin 오픈소스
+---------------------------------
 
 세월호는 왜는 PHP 5.2와 jquery로 동작하며, 외부 라이브러리들을 일부 사용하고 있습니다. 사용 중인 라이브러리들의 목록과 라이선스, 저장 위치는 다음과 같습니다.
 
@@ -58,12 +63,12 @@
 | [OpeningSequence][repository-opening-sequence]        | [Codrops][license-codrops]             | fsbb/OpeningSequence                              |
 | [actual][repository-actual]                           | [Copyright 2011, Ben Lin][license-lin] | contrib/jquery.actual                             |
 
-2.  브라우져 지원
+3.  브라우져 지원
 -----------------
 
 '세월호는 왜' 프로젝트는 IE8 및 이하 버젼 IE 브라어져를 지원하지 않습니다. HTML5 를 지원하는 브라우져에서만 정상동작합니다.
 
-3. 소스 설명
+4. 소스 설명
 ------------
 
 1.  four-slide-book-block
@@ -77,14 +82,14 @@
     * 사이트 첫번째 오프닝 에니메이션을 위해 OpeningSequence 컴포넌트를 사용했습니다.
     * 이 소스는 출처와 라이센스만 명시한다면 누구나 재배포, 수정배포가 가능합니다.
     * 상세한 메뉴얼을 하단 5번에서
-    * License: [MIT License][[license-mit]
+    * License: [MIT License][license-mit]
 
 2.  jquery.sewol-timeline.js
     * 폴더: js/jquery.sewol-timeline.js, css/sewol.timeline.css
     * 각 chapter는 타임라인 형식으로 구성되어 있습니다. 이 각각의 타임라인들을 실제로 콘트롤하는 jquery plugin 입니다.
     * 이 소스 역시 출처와 라이센스만 명시한다면 누구나 배포, 재수정 배포할 수 있습니다.
     * 상세한 메뉴얼을 하단 6번에서
-    * License: [MIT License][[license-mit]]
+    * License: [MIT License][license-mit]
 
 3.  marsa.php
     * 폴더: marsa.php, js/jquery.marsa-diagram.js, css/marsa.diagram.css
@@ -110,7 +115,7 @@
     * 폴더: css/fonts
     * 이 사이트에서 사용하는 이미지 폰트입니다. 주로 정부부처와 기관의 아이콘을 표시하기 위해 만들어졌습니다. 이 font는 icomoon 사이트의 무료 서비스를 이용하여 만들었습니다.
 
-4. 타임라인 데이터
+5. 타임라인 데이터
 ------------------
 
 *  폴더: data/timeline.json
@@ -118,7 +123,7 @@
 *  내용을 수정하고 싶으신 분은 이 파일을 수정하시면 됩니다.
 *  data/timeline.json 내용은 [정보공유라이선스 2.0: 영리금지 http://freeuse.or.kr/htm/main1_32.htm][license-freeuse] 라이선스를 따릅니다.
 
-5.  four-slide-book-block 사용법
+6.  four-slide-book-block 사용법
 -------------------------------
 
 *  기본 사용법: $('element').fsbb(options);
@@ -156,10 +161,11 @@
         }
         ```
 
-6.  jquery.sewol-timeline.js 사용법
+7.  jquery.sewol-timeline.js 사용법
 -----------------------------------
 
 *  기본 사용법: $('element').sewoltm(options);
+   *  required library: perfect-scrollbar
    *  옵션
 
       ```
@@ -173,9 +179,10 @@
          eventHandle : true(타임라인의 event handler(click/hover etc..) 를 활성화할지 여부),
          autostart : false(타임라인 시작시 첫번째 항목을 자동으로 활성화하는 옵션)
          onBefore: function() {} (타임라인의 활성화되기 전 beforeEvent),
-         onShowContent: function() {} (타임라인의 개별 항목이 상세보기할때 beforeEvent),
-         onFirstContent: function() {} (타임라인 내용보기에서 첫번째 항목일때 발생하는 Event),
-         onLastContent: function() {} (타임라인 내용기에서 마지막 항목일때 발생하는 Event)
+         onShowContent: function() { return false; } (타임라인의 개별 항목이 상세보기할때 beforeEvent),
+         onFirstContent: function() { return false; } (타임라인 내용보기에서 첫번째 항목일때 발생하는 Event),
+         onLastContent: function() { return false; } (타임라인 내용기에서 마지막 항목일때 발생하는 Event),
+         onResize: function(uniqueID) { return false; } (화면이 resizing Event가 일어날때 동작처리, uniqueID는 타임라인에 자동으로 부여되는 unique ID 값)
       }
       ```
 
@@ -200,6 +207,23 @@
       * $('element').sewoltm('start',{options});
       * 타임라인의 Event(click,hover,resize etc..)를 재활성화시킨다.
 
+*  HTML markup
+   ```
+   <ul class="sewol-timeline">
+       <li class="timeline-item">
+           <div class="date">날짜</div>
+           <article class="item-content tagClass">
+               <h3 class="headline">제목</h3>
+               <div class="text">
+                   <div class="text-wrap">
+                       본문
+                   </div>
+               </div>
+           </article>
+       </li>
+       ....
+   </ul>
+   ```
 
 [jinbonetwork]: http://www.jinbo.net
 [opengirok]: http://www.opengirok.or.kr

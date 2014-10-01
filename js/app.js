@@ -361,9 +361,7 @@ jQuery(document).ready(function() {
 					);
 					jQuery(this).data('activated',true);
 					jQuery(this).bind('click.sewol',function(e) {
-//						if(jQuery(window).width() > 640) {
-							org_fs_mode(this);
-//						}
+						org_fs_mode(this);
 					});
 				}
 			});
@@ -403,6 +401,18 @@ jQuery(document).ready(function() {
 					}
 				});
 				btn.data('lastEvent',true);
+			}
+		},
+		onResize: function(uniqueID) {
+			if(mobileMode !== true && jQuery('.fsbb-wrapper').hasClass('bb-mode')) {
+				var tm = jQuery('.sewol-timeline.'+uniqueID);
+				if(tm.attr('data-mode') == 'full') {
+					var chapter = tm.attr('id').split('-')[0].substr(7,1);
+					var max_width = parseInt(jQuery('#chapter'+chapter+'-timeline-slider').css('left'));
+					var summary = jQuery('#chapter'+chapter+'-item .summary');
+					max_width = max_width - summary.offset().left - 15;
+					summary.css( { 'width' : max_width+'px' } );
+				} 
 			}
 		}
 	});

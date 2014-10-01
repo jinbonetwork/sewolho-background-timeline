@@ -563,7 +563,6 @@ h1.fsbb-title {
 .sewol .fsbb-container .bb-bookblock .summary {
 	max-height: none !important;
 	overflow: auto !important;
-	display: none;
 }
 .sewol.bb-mode .bb-bookblock .item-background {
 	display: none;

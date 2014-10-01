@@ -40,7 +40,8 @@
 		onBefore: function() { return false },
 		onShowContent: function(target) { return false; },
 		onFirstContent: function(target) { return false; },
-		onLastContent: function(target) { return false; }
+		onLastContent: function(target) { return false; },
+		onResize: function(uniqueID) { return false; }
 	};
 
 	jQuery.SewolTimeline.prototype = {
@@ -443,6 +444,7 @@
 					this.$slider.css({ 'left' : tleft + 'px', 'top' : ttop + 'px', 'width' : '60%', 'height' : theight + 'px' });
 				}
 			}
+			this.options.onResize(this.uniqueID);
 		},
 		initEvent : function(autostart) {
 			var self = this;
@@ -561,15 +563,28 @@
 								self.scrollTo(0);
 								break;
 						}
+					} else if(!self.$slider.hasClass('active')) {
+						switch (keyCode) {
+							case arrow.left:
+							case arrow.up:
+							case arrow.right:
+							case arrow.down:
+								self.activeElement(s_i,false);
+								self.currentActivate = s_i;
+								self.hoverContentTitle(s_i,s_j);
+								self.showContent(s_i, s_j, self.options.showContentAnimate, self.options.slideContentAnimate);
+								self.scrollTo(s_i);
+								break;
+						}
 					} else {
 						switch (keyCode) {
 							case arrow.left:
 							case arrow.up:
-								self.prevContent( parseInt(s_i), parseInt(s_j) );
+								self.$slider.find('.navi.prev').click();
 								break;
 							case arrow.right:
 							case arrow.down:
-								self.nextContent( parseInt(s_i), parseInt(s_j) );
+								self.$slider.find('.navi.next').click();
 								break;
 						}
 					}
