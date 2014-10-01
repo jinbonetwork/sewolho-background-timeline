@@ -179,18 +179,18 @@ html, body {
 	z-index: 300;
 	bottom: 40px;
 	width: 280px;
-	height: 170px;
+	height: 190px;
 	text-align: center;
 	transition: all 0.8s;
 	-webkit-transition: all 0.8s;
 	-moz-transition: all 0.8s;
 	-ms-transition: all 0.8s;
 	-o-transition: all 0.8s;
-	transform: translateY(170px);
-	-webkit-transform: translateY(170px);
-	-moz-transform: translateY(170px);
-	-ms-transform: translateY(170px);
-	-o-transform: translateY(170px);
+	transform: translateY(190px);
+	-webkit-transform: translateY(190px);
+	-moz-transform: translateY(190px);
+	-ms-transform: translateY(190px);
+	-o-transform: translateY(190px);
 	opacity: 0;
 }
 #frame #site-footer .boxinfo.active {
@@ -307,7 +307,7 @@ html, body {
 	display: none;
 }
 #frame #site-footer #creator-content .wrapper {
-	height: 135px;
+	height: 155px;
 	padding-top: 25px;
 }
 #frame #site-footer #creator-content .wrapper ul {

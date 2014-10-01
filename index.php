@@ -418,6 +418,7 @@ $tags = $timeline['tag'];
 							<li><label>콘텐츠기획</label>강성국 <a href="http://www.opengirok.or.kr/" target="_blank">정보공개센터</a></li>
 							<li><label>디자인</label>뎡야핑 <a href="http://www.jinbo.net" target="_blank">진보네트워크센터</a></li>
 							<li><label>프로그램</label>황규만 <a href="http://www.jinbo.net" target="_blank">진보네트워크센터</a></li>
+							<li><label>사이트소개</label><a href="https://github.com/jinbonetwork/sewolho-background-timeline" target="_blank">자세히보기</a></li>
 						</ul>
 						<div class="arrow"></div>
 					</div>
