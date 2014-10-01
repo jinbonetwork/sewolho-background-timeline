@@ -36,6 +36,7 @@
 		showContentOnHover : false,
 		slideContentAnimate : 'horizontal-slide',
 		eventHandle : 'true',
+		autostart : false,
 		onBefore: function() { return false },
 		onShowContent: function(target) { return false; },
 		onFirstContent: function(target) { return false; },
@@ -144,8 +145,9 @@
 
 			self.resize();
 			this.options.onBefore();
-			if(opt.eventHandle === true || opt.eventHandle === 'true')
-				self.initEvent();
+			if(opt.eventHandle === true || opt.eventHandle === 'true') {
+				self.initEvent(opt.autostart);
+			}
 		},
 		activeElement : function(idx,auto) {
 			var self = this;
@@ -389,6 +391,11 @@
 				this.$scrollElement.perfectScrollbar('update');
 			}
 		},
+		setStart: function(i,j) {
+			this.$slider.attr('data-target-item',i);
+			this.$slider.attr('data-target-items',j);
+			this.gotoItem = true;
+		},
 		resize : function() {
 			this.welWidth = this.$wel.width();
 			this.welHeight = this.$wel.height();
@@ -412,7 +419,7 @@
 			var max_left = this.maxTitle + 30;
 			if(this.$el.data('mode') == 'full') {
 				if($window.width() <= 1024) {
-					var tleft = Math.max( parseInt($window.width() * 0.4), max_left);
+					var tleft = Math.min( parseInt($window.width() * 0.4), max_left);
 					var twidth = ($window.width() - tleft - 50);
 				} else {
 					var tleft = Math.max( parseInt(this.welWidth * 0.4), max_left);
@@ -437,7 +444,7 @@
 				}
 			}
 		},
-		initEvent : function() {
+		initEvent : function(autostart) {
 			var self = this;
 			this.enableEvent = true;
 			if(this.options.showContentOnHover === true && this.$el.data('mode') == 'full') {
@@ -502,16 +509,78 @@
 					self.hoverContentTitle(i,j);
 				}
 			});
+			var s_i = -1;
+			var s_j = -1;
+			if(this.gotoItem == true) {
+				s_i = this.$slider.attr('data-target-item');
+				s_j = this.$slider.attr('data-target-items');
+				this.gotoItem = false;
+			} else if(autostart == true) {
+				s_i = this.$slider.attr('data-active-item');
+				if(isNaN(s_i)) s_i = 0;
+				s_j = this.$slider.attr('data-active-items');
+				if(isNaN(s_j)) s_j = 0;
+			}
+			if(s_i >= 0 && s_j >= 0) {
+				this.activeElement(s_i,false);
+				this.currentActivate = s_i;
+				this.hoverContentTitle(s_i,s_j);
+				this.showContent(s_i,s_j,this.options.showContentAnimate,this.options.slideContentAnimate);
+				this.scrollTo(s_i);
+			}
 
 			this.$slider.find('.icon-close').bind('click.sewoltm touchstart.sewoltm', function(e) {
 				self.hideContent(self.options.showContentAnimate);
 			});
 
+			if(this.multiple !== true) {
+				jQuery(document).bind('keydown.'+self.uniqueID, function(e) {
+					if(self.multiple === true) return;
+					var keyCode = e.keyCode || e.which,
+					arrow = {
+						left : 37,
+						up : 38,
+						right : 39,
+						down : 40
+					};
+					console.log(keyCode);
+
+					var s_i = self.$slider.attr('data-active-item');
+					var s_j = self.$slider.attr('data-active-items');
+					console.log(s_i,s_j);
+					if( isNaN(s_i) || isNaN(s_j) ) {
+						switch (keyCode) {
+							case arrow.left:
+							case arrow.up:
+							case arrow.right:
+							case arrow.down:
+								self.activeElement(0,false);
+								self.currentActivate = 0;
+								self.hoverContentTitle(0,0);
+								self.showContent(0, 0, self.options.showContentAnimate, self.options.slideContentAnimate);
+								self.scrollTo(0);
+								break;
+						}
+					} else {
+						switch (keyCode) {
+							case arrow.left:
+							case arrow.up:
+								self.prevContent( parseInt(s_i), parseInt(s_j) );
+								break;
+							case arrow.right:
+							case arrow.down:
+								self.nextContent( parseInt(s_i), parseInt(s_j) );
+								break;
+						}
+					}
+				});
+			}
+
 			this.$scrollElement.scroll(function(e){
 				var self = this;
 			});
 
-			$window.bind('resize.sewoltm',function(e) {
+			$window.bind('resize.'+this.uniqueID,function(e) {
 				if(self.enableEvent === true) {
 					self.resize();
 				}
@@ -543,7 +612,8 @@
 			this.$el.unbind('mouseleave.sewoltm');
 			this.$slider.find('.icon-close').unbind('click.sewoltm touchstart.sewoltm');
 			this.$scrollElement.unbind('scroll');
-//			$window.off('resize.sewoltm');
+			jQuery(document).unbind('keydown.'+this.uniqueID);
+			$window.unbind('resize.'+this.uniqueID);
 		},
 		start : function(options) {
 			this.init(options);

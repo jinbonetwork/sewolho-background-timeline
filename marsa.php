@@ -1,7 +1,7 @@
 			<div id="marsa_structure" class="infograph">
 				<div class="wrapper">
 					<div class="icon-close"><span>닫기</span></div>
-					<div id="marsa" class="title org greenbox">
+					<div id="marsa" class="title org greenbox innerLink">
 						<h5>한국해양구조협회</h5>
 						<div>
 							<h6 id="marsa-advisory" class="point" data-endpoint="left" data-tree="politic">고문단</h6>
@@ -12,6 +12,7 @@
 						<div class="org-description"><?php print $tags['marsa']['description']; ?></div>
 <?php				}?>
 					</div>
+					<h6 class="category">고문단</h6>
 					<div id="politic" class="org element whitebox">
 						<h5>정치권</h5>
 						<ul>
@@ -26,7 +27,8 @@
 						<div class="org-description"><?php print $tags['politic']['description']; ?></div>
 <?php				}?>
 					</div>
-					<div id="umi" class="org element whitebox">
+					<h6 class="category">부총재</h6>
+					<div id="umi" class="org element whitebox innerLink">
 						<h5>언딘</h5>
 						<ul>
 							<li><label>대표이사</label> 김윤상</li>
@@ -35,7 +37,7 @@
 						<div class="org-description"><?php print $tags['umi']['description']; ?></div>
 <?php				}?>
 					</div>
-					<div id="kcg" class="org element whitebox">
+					<div id="kcg" class="org element whitebox innerLink">
 						<h5>해양경찰</h5>
 						<ul>
 							<li><label>전 남해지방해양경찰청장</label> 김용환</li>
@@ -45,7 +47,7 @@
 						<div class="org-description"><?php print $tags['kcg']['description']; ?></div>
 <?php				}?>
 					</div>
-					<div id="haewon" class="org element whitebox">
+					<div id="haewon" class="org element whitebox innerLink">
 						<h5>한국해운조합</h5>
 						<ul>
 							<li><label>회장</label> 이용섭</li>
@@ -63,7 +65,7 @@
 						<div class="org-description"><?php print $tags['shipowners']['description']; ?></div>
 <?php				}?>
 					</div>
-					<div id="kr" class="org element whitebox">
+					<div id="kr" class="org element whitebox innerLink">
 						<h5>한국선급</h5>
 						<ul>
 							<li><label>경영지원본부장</label> 정명준</li>
@@ -72,6 +74,7 @@
 						<div class="org-description"><?php print $tags['kr']['description']; ?></div>
 <?php				}?>
 					</div>
+					<h6 class="category">이사</h6>
 					<div id="navy" class="org element whitebox">
 						<h5>해군</h5>
 						<ul>
@@ -81,7 +84,7 @@
 						<div class="org-description"><?php print $tags['navy']['description']; ?></div>
 <?php				}?>
 					</div>
-					<div id="kst" class="org element whitebox">
+					<div id="kst" class="org element whitebox innerLink">
 						<h5>선박안전기술공단</h5>
 						<ul>
 							<li><label>이사장</label> 부원찬</li>
@@ -90,7 +93,7 @@
 						<div class="org-description"><?php print $tags['kst']['description']; ?></div>
 <?php				}?>
 					</div>
-					<div id="mof" class="org element whitebox">
+					<div id="mof" class="org element whitebox innerLink">
 						<h5>해양수산부</h5>
 						<ul>
 							<li><label>감사관</label> 장황호</li>

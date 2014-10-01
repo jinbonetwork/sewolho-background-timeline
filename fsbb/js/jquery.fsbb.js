@@ -287,17 +287,15 @@
 					jQuery( document ).bind('keydown.fsbb', function(e) {
 						var keyCode = e.keyCode || e.which,
 						arrow = {
-							left : 37,
-							up : 38,
-							right : 39,
-							down : 40
+							pageup : 33,
+							pagedown : 34
 						};
 
 						switch (keyCode) {
-							case arrow.left:
+							case arrow.pageup:
 								config.$bookBlock.bookblock( 'prev' );
 								break;
-							case arrow.right:
+							case arrow.pagedown:
 								config.$bookBlock.bookblock( 'next' );
 								break;
 						}

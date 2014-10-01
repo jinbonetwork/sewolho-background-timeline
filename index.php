@@ -400,7 +400,7 @@ $tags = $timeline['tag'];
 					<div class="wrapper">
 						<div class="icon-close"><span>Close</span></div>
 						<ul>
-							<li class="twitter"><a href="https://twitter.com/share?text=<?php print rawurlencode('http://www.taogi.net/special/sewolho/background/'); ?>" title="트위터 리트윗하기" target="_blank"><span>Twitter</span></a></li>
+							<li class="twitter"><a href="https://twitter.com/share?text=<?php print rawurlencode('타임라인으로 탐구하는 세월호는 왜.'); ?>" title="트위터 리트윗하기" target="_blank"><span>Twitter</span></a></li>
 							<li class="facebook"><a href="https://facebook.com/sharer.php?u=<?php print rawurlencode('http://www.taogi.net/special/sewolho/background/'); ?>" title="페이스북 좋아요" target="_blank"><span>FaceBook</span></a></li>
 							<li class="github"><a href="https://github.com/jinbonetwork/sewolho-background-timeline" title="GitHub 소스 공유하기" target="_blank"><span>GitHub</span></a></li>
 						</ul>

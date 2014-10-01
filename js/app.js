@@ -122,7 +122,7 @@ jQuery(document).ready(function() {
 		org.addClass(tg);
 
 		if(mobileMode === true) {
-			var tw = parseInt(jQuery('#article-flip').innerWidth() - 60)
+			var tw = parseInt(jQuery('#site-main').innerWidth() - 60)
 		} else {
 			if(hasdescript === true) {
 				var th = parseInt(jQuery('#site-main').height() * 0.3);
@@ -194,7 +194,7 @@ jQuery(document).ready(function() {
 	}
 
 	function animate_org_fs(fsbbc,tg, tw, th,hasdescript) {
-		jQuery('.sewol-timeline').sewoltm('init', { tag : tg, mode: 'overlay', multiple: true, eventHandle : true } )
+		jQuery('.sewol-timeline').sewoltm('init', { tag : tg, mode: 'overlay', multiple: true, eventHandle : true, autostart : false } )
 		jQuery('#article-flip').fsbb('init', {
 			mode: 'quart',
 			title : '.fsbb-org-title',
@@ -249,13 +249,10 @@ jQuery(document).ready(function() {
 			var chl = history.chapter;
 			var activeI = history.activeI;
 			var activeC = history.activeC;
+			jQuery('#chapter'+chl+'-item .sewol-timeline').sewoltm('setStart',activeI,activeC);
 			jQuery('#article-flip').fsbb('bb_activate',{
 				chapter : chl,
 				bookblock_after : function() {
-					jQuery('#chapter'+chl+'-item .sewol-timeline').sewoltm('activeElement',activeI,true);
-					jQuery('#chapter'+chl+'-item .sewol-timeline').sewoltm('hoverContentTitle',activeI,activeC);
-					jQuery('#chapter'+chl+'-item .sewol-timeline').sewoltm('showContent',activeI,activeC,'opacity');
-					jQuery('#chapter'+chl+'-item .sewol-timeline').sewoltm('scrollTo',activeI);
 				}
 			});
 			if(history.mode == 'marsa_structure') {
@@ -271,6 +268,7 @@ jQuery(document).ready(function() {
 		jQuery('#site-main').addClass('infographic');
 		setTimeout(function() {
 			jQuery('#marsa_structure .wrapper').addClass('active');
+			var dT = ( (jQuery(window).width() <= 640) ? 1 : 600);
 			setTimeout(function() {
 				var $this = jQuery('#marsa_structure .wrapper');
 				if(jQuery('#site-main #marsa_structure .icon-close').data('clickEvent') !== true) {
@@ -287,7 +285,7 @@ jQuery(document).ready(function() {
 					$this.perfectScrollbar('destroy');
 					$this.perfectScrollbar();
 				}
-			}, 600);
+			}, dT);
 		}, 10);
 	}
 
@@ -318,7 +316,7 @@ jQuery(document).ready(function() {
 				jQuery('.chapter-item').each(function() {
 					var d = jQuery(this).data('chapter');
 					if(d == chapter) {
-						jQuery('.chapter'+chapter+'-item .sewol-timeline').sewoltm('init', { eventHandle : true } );
+						jQuery('.chapter'+chapter+'-item .sewol-timeline').sewoltm('init', { eventHandle : true, autostart : ( (mobileMode == true) ? false : true ) } );
 					} else {
 						jQuery('.chapter'+d+'-item .sewol-timeline').sewoltm('stop');
 					}
@@ -381,15 +379,10 @@ jQuery(document).ready(function() {
 						var cC = parseInt(jQuery('#article-flip').attr('data-currentchapter'));
 						if(cC > 1) {
 							jQuery('#article-flip').bookblock('jump', (cC - 1));
-							setTimeout(function() {
-								var li = jQuery('#chapter'+(cC - 1)+'-item .sewol-timeline .timeline-item:last');
-								var tI = li.attr('data-item');
-								var tIs = li.find('.item-content:last').attr('data-items');
-								jQuery('#chapter'+(cC - 1)+'-item .sewol-timeline').sewoltm('activeElement',tI,false);
-								jQuery('#chapter'+(cC - 1)+'-item .sewol-timeline').sewoltm('hoverContentTitle',tI,tIs);
-								jQuery('#chapter'+(cC - 1)+'-item .sewol-timeline').sewoltm('showContent',tI,tIs,'opacity');
-								jQuery('#chapter'+(cC - 1)+'-item .sewol-timeline').sewoltm('scrollTo',tI);
-							},1520);
+							var li = jQuery('#chapter'+(cC - 1)+'-item .sewol-timeline .timeline-item:last');
+							var tI = li.attr('data-item');
+							var tIs = li.find('.item-content:last').attr('data-items');
+							jQuery('#chapter'+(cC - 1)+'-item .sewol-timeline').sewoltm('setStart',tI,tIs);
 						}
 					}
 				});
@@ -405,12 +398,7 @@ jQuery(document).ready(function() {
 						var cC = parseInt(jQuery('#article-flip').attr('data-currentchapter'));
 						if(cC < 4) {
 							jQuery('#article-flip').bookblock('jump', (cC + 1));
-							setTimeout(function() {
-								jQuery('#chapter'+(cC + 1)+'-item .sewol-timeline').sewoltm('activeElement',0,false);
-								jQuery('#chapter'+(cC + 1)+'-item .sewol-timeline').sewoltm('hoverContentTitle',0,0);
-								jQuery('#chapter'+(cC + 1)+'-item .sewol-timeline').sewoltm('showContent',0,0,'opacity');
-								jQuery('#chapter'+(cC + 1)+'-item .sewol-timeline').sewoltm('scrollTo',0);
-							},1520);
+							jQuery('#chapter'+(cC + 1)+'-item .sewol-timeline').sewoltm('setStart',0,0);
 						}
 					}
 				});
@@ -581,7 +569,7 @@ jQuery(document).ready(function() {
 		eventHandle : false,
 		background: './images/background.jpg',
 		onAfter: function() {
-			jQuery('#marsa_structure .org').click(function(e) {
+			jQuery('#marsa_structure .org.innerLink').click(function(e) {
 				if(jQuery(this).hasClass('active')) {
 					org_fs_mode(this);
 				}

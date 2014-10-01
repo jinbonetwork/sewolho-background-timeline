@@ -747,7 +747,7 @@
 	display: none;
 }
 
-#marsa_structure .org {
+#marsa_structure .org.innerLink {
 	cursor: pointer;
 }
 #marsa_structure .org h5:before { 
@@ -1022,10 +1022,50 @@
 	.fsbb-org-title .organize .org-description .right dl {
 		padding: 0;
 	}
+	#marsa_structure {
+	}
+	#marsa_structure #marsa {
+		display: inline-block;
+		max-width: 66%;
+		margin: 35px 10% 6px 10%;
+	}
+	#marsa_structure #marsa h5 {
+	}
+	#marsa_structure #marsa h6 {
+		display: none;
+	}
+	#marsa_structure h6.category {
+		margin: 12px 10%;
+		padding: 0;
+		color: #fff;
+		font-size: 1.1em;
+		letter-spacing: -0.05em;
+	}
+	#marsa_structure .org.whitebox {
+		display: inline-block;
+		margin: 6px 10%;
+		max-width: 66%;
+	}
+	#marsa_structure .org.whitebox:after {
+		clear:both;
+		content: ' ';
+		display: block;
+	}
+	#marsa_structure .org.whitebox h5 {
+		float: left;
+		padding-top: 3px;
+		margin-right: 50px;
+	}
+	#marsa_structure .org.whitebox ul {
+		float: left;
+	}
 }
 
 @media only screen and (max-width: 480px) {
 	.os-phrases h2 {
 		font-size: 50px;
+	}
+	#marsa_structure #marsa {
+		padding: 18px 18px 8px 18px;
 	}
 }

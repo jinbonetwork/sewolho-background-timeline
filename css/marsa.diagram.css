@@ -2,6 +2,9 @@
 	position: absolute;
 	z-index: 201;
 }
+.marsa-diagram h6.category {
+	display: none;
+}
 .marsa-diagram .wrapper {
 	z-index: 202;
 }
@@ -37,4 +40,18 @@
 }
 
 @media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 640px) {
+	.marsa-diagram h6.category {
+		display: block;
+	}
+	.marsa-diagram .title {
+		position: static;
+	}
+	.marsa-diagram .element {
+		position: static;
+	}
+	.marsa-diagram .connector {
+		display: none;
+	}
 }
