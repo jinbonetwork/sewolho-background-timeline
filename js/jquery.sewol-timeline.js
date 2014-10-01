@@ -29,12 +29,17 @@
 	jQuery.SewolTimeline.defaults = {
 		theme : 'sewol',
 		mode : 'full',
+		multiple : false,
 		tag : '',
 		scrollElement : '.item-wrapper',
 		showContentAnimate : 'opacity',
+		showContentOnHover : false,
+		slideContentAnimate : 'horizontal-slide',
 		eventHandle : 'true',
 		onBefore: function() { return false },
-		onShowContent: function(target) { return false; }
+		onShowContent: function(target) { return false; },
+		onFirstContent: function(target) { return false; },
+		onLastContent: function(target) { return false; }
 	};
 
 	jQuery.SewolTimeline.prototype = {
@@ -44,6 +49,8 @@
 			this.options = $.extend( true, {}, jQuery.SewolTimeline.defaults, options );
 			this.$items = [];
 			var $items = this.$el.children('.timeline-item');
+			this.uniqueID = this.unique_ID(6);
+			this.$el.addClass(this.uniqueID);
 
 			var transEndEventNames = {
 				'WebkitTransition': 'webkitTransitionEnd',
@@ -82,13 +89,6 @@
 					obj2.title.append('<div class="clone"><span>'+obj2.title.html()+'</span></div><div class="after"></div>');
 					obj2.text = obj2.item.find('.text');
 					obj2.text.attr('data-item',i).attr('data-items',k);
-					var clb = jQuery('<div class="close" data-item="'+i+'" data-items="'+k+'"><span class="icon-close">Close</span></div>');
-					clb.appendTo(obj2.text);
-					obj2.text.wrap('<div class="text-position-wrapper"></div>');
-					clb.bind('click.sewoltm touchstart.sewoltm',function(e) {
-						self.hideContent(jQuery(this).attr('data-item'),jQuery(this).attr('data-items'),self.options.showContentAnimate);
-						self.unhoverContentTitle(jQuery(this).attr('data-item'),jQuery(this).attr('data-items'));
-					});
 					var tags = obj2.item.attr('data-tags').split(' ');
 					for(var j=0; j<tags.length; j++) {
 						obj.item.addClass(tags[j]);
@@ -97,24 +97,57 @@
 				});
 				self.$items.push(obj);
 			});
-			this.options.onBefore();
+
+			this.$slider = jQuery('<div id="'+this.$el.attr('id')+'-slider'+'" class="sewol-content-slider"><div class="sewol-content-container"><div class="icon-close"><span>닫기</span></div><div class="sewol-content-wrapper"><div class="slide-item prev"></div><div class="slide-item current"></div><div class="slide-item next"></div></div><div class="navi prev"><span>이전</span></div><div class="navi next"><span>다음</span></div></div></div>');
+			this.$slider.appendTo('body');
+			this.$slider.attr('data-unique-id',this.uniqueID);
+			this.$slider_prev_wrapper = '<div class="slide-item prev"></div>';
+			this.$slider_next_wrapper = '<div class="slide-item next"></div>';
+
 			this.init({'mode' : 'full'});
 		},
+		unique_ID: function(size) {
+
+			var getRandomNumber = function(range) {
+				return Math.floor(Math.random() * range);
+			};
+
+			var getRandomChar = function() {
+				var chars = "abcdefghijklmnopqurstuvwxyzABCDEFGHIJKLMNOPQURSTUVWXYZ";
+				return chars.substr( getRandomNumber(62), 1 );
+			};
+
+			var randomID = function(size) {
+				var str = "";
+				for(var i = 0; i < size; i++) {
+					str += getRandomChar();
+				}
+				return str;
+			};
+
+			return randomID(size);
+        },
 		init: function(options) {
 			var self = this;
 			var opt = $.extend( true, {}, self.options, options );
 
 			this.$tag = opt.tag;
-			if(this.$el.data('mode')) this.$wel.removeClass(this.$el.data('mode'));
+			if(this.$el.data('mode')) {
+				this.$wel.removeClass(this.$el.data('mode'));
+				this.$slider.removeClass(this.$el.data('mode'));
+			}
 			this.$el.data('mode',opt.mode);
 			this.$el.attr('data-mode',opt.mode);
 			this.$wel.addClass(opt.mode);
+			this.$slider.addClass(opt.mode);
+			this.multiple = opt.multiple;
 
 			self.resize();
+			this.options.onBefore();
 			if(opt.eventHandle === true || opt.eventHandle === 'true')
 				self.initEvent();
 		},
-		activeElement : function(idx) {
+		activeElement : function(idx,auto) {
 			var self = this;
 			if(!this.$items[idx].item.hasClass('active')) {
 				this.$items[idx].item.addClass('active').siblings().each(function() {
@@ -125,9 +158,11 @@
 					c.addClass('active');
 					jQuery(this).unbind(self.transEndEventName);
 				});
-				this.hoverContentTitle(idx,0);
-				if(this.$el.data('mode') == 'full')
-					this.showContent(idx,0,self.options.showContentAnimate);
+				if(auto === true) {
+					this.hoverContentTitle(idx,0);
+					if(this.options.showContentOnHover === true && this.$el.data('mode') == 'full')
+						this.showContent(idx,0,self.options.showContentAnimate,self.options.showContentAnimate);
+				}
 			}
 		},
 		reactiveElement : function(idx) {
@@ -156,15 +191,6 @@
 			var self = this;
 			if(this.$items[i].items[j].title.hasClass('hover')) return;
 			this.$items[i].items[j].title.addClass('hover');
-			if(this.$el.data('mode') == 'full') {
-				this.$items[i].items[j].title.find('.after').addClass('hover');
-				this.$items[i].items[j].title.find('.clone').bind(self.transEndEventName+'.hover', function(e) {
-					var s = self.$items[i].items[j].title.offset().left + self.$items[i].items[j].title.width();
-					var e = self.$items[i].items[j].text.offset().left;
-					self.$items[i].items[j].title.find('.after').css( { 'width' : ( e - s ) + 'px' } );
-					jQuery(this).unbind(self.transEndEventName);
-				});
-			}
 			for(var k=0; k<this.$items.length; k++) {
 				for(var l=0; l<this.$items[k].items.length; l++) {
 					if(k != i || l != j) {
@@ -173,75 +199,194 @@
 				}
 			}
 		},
-		showContent : function(i,j,effect) {
+		showContent : function(i,j,show_effect,slide_effect) {
 			var self = this;
-			switch(effect) {
-				case 'opacity':
-					this.$items[i].items[j].text.css( { 'opacity' : '0' } );
-					this.$items[i].items[j].text.addClass('effect').addClass('show');
-					this.$items[i].items[j].item.addClass('active');
-					setTimeout(function() {
-						self.$items[i].items[j].text.css( { 'opacity' : '1' } );
-						self.$items[i].items[j].text.bind(self.transEndEventName, function(e) {
-							if(jQuery(this).hasClass('show')) {
-								jQuery(this).removeClass('effect');
-								self.options.onShowContent(self.$items[i].items[j].item);
-							}
-						});
-					}, 10);
-				default:
-					this.$items[i].items[j].item.addClass('active');
-					this.options.onShowContent(this.$items[i].items[j].item);
-					break;
+
+			if(this.multiple === true) {
+				if(!this.$slider.hasClass('active')) {
+					jQuery('.sewol-content-slider').each(function(i) {
+						if(jQuery(this).attr('data-unique-id') != self.uniqueID) {
+							jQuery('.'+jQuery(this).attr('data-unique-id')).sewoltm('hideContent','');
+						}
+					});
+				}
 			}
+
+			if(this.$el.data('mode') == 'full') {
+				this.$items[i].items[j].title.find('.after').addClass('hover');
+			}
+			this.$el.find('.headline .after').css({'width' : '0' });
+			var s = this.$items[i].items[j].title.offset().left + this.$items[i].items[j].title.width();
+			var e = parseInt(this.$slider.css('left'));
+			this.$items[i].items[j].title.find('.after').css( { 'width' : ( e - s + 20) + 'px' } );
+
+			var s_wrapper = this.$slider.find('.sewol-content-container');
+			var cs_effect = s_wrapper.data('cur-effect');
+			if(cs_effect && cs_effect != slide_effect) {
+				s_wrapper.removeClass(cs_effect);
+			}
+			s_wrapper.addClass(slide_effect);
+			s_wrapper.data('cur-effect',slide_effect);
+
+			if(!this.$slider.hasClass('active')) {
+				var c_effect = this.$slider.data('cur-effect');
+				if(c_effect && c_effect != show_effect) {
+					this.$slider.removeClass(c_effect);
+				}
+				this.$slider.addClass(show_effect);
+				this.$slider.data('cur-effect',show_effect);
+				this.$slider.find('.slide-item.current').html('').append(this.$items[i].items[j].text);
+				this.$slider.addClass('active');
+				if(show_effect) {
+					setTimeout(function() {
+						self.$slider.addClass('show');
+					}, 10);
+				} else {
+					this.$slider.addClass('show');
+				}
+				this.$slider.find('.navi').unbind('click.sewoltm');
+				this.$slider.find('.navi').bind('click.sewoltm',function(e) {
+					var $this = jQuery(this);
+					if($this.hasClass('unactive')) return;
+					var curI = parseInt(self.$slider.attr('data-active-item'));
+					var curJ = parseInt(self.$slider.attr('data-active-items'));
+					if($this.hasClass('prev')) {
+						self.prevContent(curI,curJ);
+					} else if($this.hasClass('next')) {
+						self.nextContent(curI,curJ);
+					}
+				});
+			} else {
+				var ci = this.$slider.attr('data-active-item');
+				var cis = this.$slider.attr('data-active-items');
+				if(ci > i) var dir = 'prev';
+				else if(ci < i) var dir = 'next';
+				else {
+					if(cis > j) var dir = 'prev';
+					else if(cis < j) var dir = 'next';
+					else var dir = 'current';
+				}
+				if(dir != 'current')
+					this.$slider.find('.slide-item.'+dir).html('').append(this.$items[i].items[j].text);
+				if(dir == 'next') {
+					this.$slider.find('.slide-item.prev').remove();
+					this.$slider.find('.slide-item.current').removeClass('current').addClass('prev');
+					this.$slider.find('.slide-item.next').removeClass('next').addClass('current');
+					this.$slider.find('.sewol-content-wrapper').append(self.$slider_next_wrapper);
+				} else if(dir == 'prev') {
+					this.$slider.find('.slide-item.next').remove();
+					this.$slider.find('.slide-item.current').removeClass('current').addClass('next');
+					this.$slider.find('.slide-item.prev').removeClass('prev').addClass('current');
+					this.$slider.find('.sewol-content-wrapper').prepend(self.$slider_prev_wrapper);
+				}
+			}
+
+			this.$slider.attr('data-active-item',i);
+			this.$slider.attr('data-active-items',j);
 			this.$el.attr('data-active-item',i);
 			this.$el.attr('data-active-items',j);
-			for(var k=0; k<this.$items.length; k++) {
-				for(var l=0; l<this.$items[k].items.length; l++) {
-					if(k != i || l != j) {
-						this.hideContent(k,l,'');
-					}
-				}
+
+			if (i == (self.$items.length - 1) && j == (self.$items[i].items.length -1) ) {
+				self.$slider.find('.navi.next').addClass('unactive');
+			} else {
+				self.$slider.find('.navi.next').removeClass('unactive');
+			}
+			if( i ==0 && j == 0) {
+				self.$slider.find('.navi.prev').addClass('unactive');
+			} else {
+				self.$slider.find('.navi.prev').removeClass('unactive');
+			}
+			if(slide_effect) {
+				setTimeout(function() {
+					self.onShowContent(i,j);
+				},810);
+			} else {
+				self.onShowContent(i,j);
+			}
+		},
+		onShowContent: function(i,j) {
+			this.options.onShowContent(this.$slider.find('.slide-item.current'));
+			if( i ==0 && j == 0) {
+				this.options.onFirstContent(this.$slider.find('.slide-item.current'));
+			}
+			if (i == (this.$items.length - 1) && j == (this.$items[i].items.length -1) ) {
+				this.options.onLastContent(this.$slider.find('.slide-item.current'));
 			}
 		},
 		unhoverContentTitle : function(i,j) {
 			var self = this;
+			if(typeof(i) == 'undefined' || typeof(j) == 'undefined') return;
 			if(!this.$items[i].items[j].title.hasClass('hover')) return;
-			if(this.$el.data('mode') == 'full' && this.transEndEventName) {
-				this.$items[i].items[j].title.find('.after').css( { 'width' : '0' } ).removeClass('hover');
-				if(parseInt(this.$items[i].items[j].title.find('.after').css('width')) > 0) {
-					this.$items[i].items[j].title.find('.after').bind(self.transEndEventName+'.unhover', function(e) {
-						if(!jQuery(this).hasClass('hover')) {
-							self.$items[i].items[j].title.removeClass('hover');
-							jQuery(this).unbind(self.transEndEventName);
-						}
-					});
-				} else {
-					this.$items[i].items[j].title.removeClass('hover');
-				}
-			} else {
-				this.$items[i].items[j].title.removeClass('hover');
-			}
+			this.$items[i].items[j].title.removeClass('show');
+			this.$items[i].items[j].title.removeClass('hover');
 			this.checkReactivateElement(i);
 		},
-		hideContent : function(i,j,effect) {
+		hideContent : function(effect) {
 			var self = this;
-			switch(effect) {
-				case 'opacity':
-					this.$items[i].items[j].text.addClass('effect').removeClass('show');
-					this.$items[i].items[j].text.css( { 'opacity' : '0' } );
-					this.$items[i].items[j].text.bind(self.transEndEventName, function(e) {
-						if(!jQuery(this).hasClass('show')) {
-							self.$items[i].items[j].item.removeClass('active');
-							jQuery(this).removeClass('effect');
-							jQuery(this).css( { 'opacity' : '1' } );
-							//jQuery(this).unbind(self.transEndEventName);
-						}
-					});
-					break;
-				default:
-					this.$items[i].items[j].item.removeClass('active');
-					break;
+			this.$slider.find('.navi').unbind('click.sewoltm');
+			var i = this.$slider.attr('data-active-item');
+			var j = this.$slider.attr('data-active-items');
+			if(i != undefined && j != undefined) {
+				this.$items[i].items[j].title.find('.after').css( { 'width' : '0' } ).removeClass('hover');
+			}
+			this.$slider.find('.perfect-scroll').each(function(i) {
+				jQuery(this).perfectScrollbar('destroy');
+				jQuery(this).removeClass('perfect-scroll');
+			});
+			this.$slider.removeClass('show');
+			if(effect) {
+				setTimeout(function() {
+					self.$slider.removeClass('active');
+				}, 800);
+			} else {
+				this.$slider.removeClass('active');
+			}
+			this.unhoverContentTitle(i,j);
+			this.$el.attr('data-active-item',null);
+			this.$el.attr('data-active-items',null);
+		},
+		prevContent: function(i,j) {
+			if(i == 0 && j == 0) return;
+			if(j == 0) {
+				var pi = i - 1;
+				var pj = this.$items[pi].items.length - 1;
+				this.activeElement(pi,false);
+			} else {
+				var pi = i;
+				var pj = j - 1;
+			}
+			this.currentActivate = pi;
+			this.hoverContentTitle(pi,pj);
+			this.showContent(pi,pj,this.options.showContentAnimate,this.options.slideContentAnimate);
+			this.scrollTo(pi);
+		},
+		nextContent: function(i,j) {
+			if( ( i == ( this.$items.length - 1 ) )
+				&& ( j == ( this.$items[i].items.length - 1 ) ) ) return;
+			if( j == ( this.$items[i].items.length - 1) ) {
+				var ni = i + 1;
+				var nj = 0;
+				this.activeElement(ni,true);
+				this.showContent(ni,nj,this.options.showContentAnimate,this.options.slideContentAnimate);
+				this.currentActivate = ni;
+			} else {
+				var ni = i;
+				var nj = j + 1;
+				this.hoverContentTitle(ni,nj);
+				this.showContent(ni,nj,this.options.showContentAnimate,this.options.slideContentAnimate);
+			}
+			this.scrollTo(ni);
+		},
+		scrollTo: function(idx) {
+			var cT = this.$items[idx].item.position().top + this.$items[idx].items[0].title.outerHeight();
+			var tT = parseInt(this.scrollHeight / 2);
+			if(cT > tT) {
+				this.$scrollElement.animate( {scrollTop : (cT - tT) + 'px' }, 800);
+			} else {
+				this.$scrollElement.animate( {scrollTop : '0' }, 800);
+			}
+			if(this.$scrollElement.hasClass('perfect-scroll')) {
+				this.$scrollElement.perfectScrollbar('update');
 			}
 		},
 		resize : function() {
@@ -249,7 +394,10 @@
 			this.welHeight = this.$wel.height();
 			this.elWidth = this.$el.width();
 			this.elHeight = this.$el.height();
+			if(jQuery(window).width() <= 640) this.Mobile = true;
+			else this.Mobile = false;
 			this.scrollHeight = this.$scrollElement.height();
+			this.offsetTop = parseInt(this.$el.offset().top - this.$scrollElement.offset().top);
 
 			var max_headline = 0;
 			for(var i=0; i<this.$items.length; i++) {
@@ -261,37 +409,51 @@
 			this.maxTitle = max_headline;
 			this.$el.attr('data-maxTitle',this.maxTitle);
 
-			for(var i=0; i<this.$items.length; i++) {
-				for(var j=0; j<this.$items[i].items.length; j++) {
-					var obj = this.$items[i].items[j];
-					if(this.$el.data('mode') == 'full') {
-						var max_left = this.maxTitle + 30;
-						if($window.width() <= 1024) {
-							var tleft = Math.max( parseInt($window.width() * 0.4), max_left);
-							var twidth = ($window.width() - tleft - 50);
-						} else {
-							var tleft = Math.max( parseInt(this.welWidth * 0.4), max_left);
-							var twidth = (this.welWidth - tleft);
-						}
-						obj.text.css({ 'left' : tleft + 'px', 'width' : twidth + 'px'});
-					} else if(this.$el.data('mode') == 'overlay') {
-						var twidth = jQuery(window).width() * 0.4;
-						var tleft = parseInt((jQuery(window).width() - twidth) / 2);
-						obj.text.css({ 'left' : tleft + 'px', 'width' : '40%'});
-					}
+			var max_left = this.maxTitle + 30;
+			if(this.$el.data('mode') == 'full') {
+				if($window.width() <= 1024) {
+					var tleft = Math.max( parseInt($window.width() * 0.4), max_left);
+					var twidth = ($window.width() - tleft - 50);
+				} else {
+					var tleft = Math.max( parseInt(this.welWidth * 0.4), max_left);
+					var twidth = (this.welWidth - tleft);
+				}
+				var theight = parseInt(this.scrollHeight * 0.8);
+				var ttop = parseInt( (this.scrollHeight - theight) / 2 );
+				if(this.Mobile == true) {
+					this.$slider.css({ 'left' : '0', 'top' : '0', 'width' : '100%', 'height' : (this.$scrollElement ? this.scrollHeight+'px' : '100%') });
+				} else {
+					this.$slider.css({ 'left' : tleft + 'px', 'top' : ttop + 'px', 'width' : twidth + 'px', 'height' : theight + 'px' });
+				}
+			} else if(this.$el.data('mode') == 'overlay') {
+				var twidth = jQuery(window).width() * 0.6;
+				var tleft = parseInt((jQuery(window).width() - twidth) / 2);
+				var theight = parseInt(jQuery(window).height() * 0.8);
+				var ttop = parseInt( (jQuery(window).height() - theight) / 2 );
+				if(this.Mobile == true) {
+					this.$slider.css({ 'left' : '0', 'top' : '0', 'width' : '100%', 'height' : '100%' });
+				} else {
+					this.$slider.css({ 'left' : tleft + 'px', 'top' : ttop + 'px', 'width' : '60%', 'height' : theight + 'px' });
 				}
 			}
 		},
 		initEvent : function() {
 			var self = this;
 			this.enableEvent = true;
+			if(this.options.showContentOnHover === true && this.$el.data('mode') == 'full') {
+				this.hoverMode = true;
+				var eleventList = "mouseenter.sewoltm touchstart.sewoltm";
+			} else {
+				this.hoverMode = false;
+				var eleventList = "click.sewoltm touchstart.sewoltm";
+			}
 			for(var i=0; i<this.$items.length; i++) {
 				var item = this.$items[i];
 				this.reactiveElement(i);
 				if(item.item.data('initevent') !== true) {
 					item.item.bind('mouseenter.sewoltm click.sewoltm', function(e) {
 						if(self.enableEvent !== true) return;
-						self.activeElement(jQuery(this).attr('data-item'));
+						self.activeElement(jQuery(this).attr('data-item'),false);
 						self.currentActivate = jQuery(this).attr('data-item');
 					});
 					item.item.bind('mouseleave.sewoltm', function(e) {
@@ -307,46 +469,48 @@
 					for(var j=0; j < item.items.length; j++) {
 						this.unhoverContentTitle(i,j);
 						item.items[j].title.find('.after').css( { 'width' : '0' } );
-						this.hideContent(i,j,'');
 						if(this.$tag && !item.items[j].item.hasClass(self.$tag)) {
 							item.items[j].item.addClass('hidden');
 						} else {
 							item.items[j].item.removeClass('hidden');
-							if(item.items[j].item.data('hoverevent') !== true) {
-								item.items[j].title.bind('mouseenter.sewoltm touchstart.sewoltm', function(e) {
+							if( item.items[j].item.data('clickevent') !== true  ) {
+								item.items[j].title.bind("mouseenter.sewoltm click.sewoltm touchstart.sewoltm", function(e) {
 									if(self.enableEvent !== true) return;
 									self.hoverContentTitle(jQuery(this).attr('data-item'),jQuery(this).attr('data-items'));
-									if(self.$el.data('mode') == 'full') {
-										self.showContent(jQuery(this).attr('data-item'),jQuery(this).attr('data-items'),self.options.showContentAnimate);
+									if(self.hoverMode === true || e.type == 'click') {
+										self.showContent(jQuery(this).attr('data-item'),jQuery(this).attr('data-items'),self.options.showContentAnimate,self.options.slideContentAnimate);
 									}
 								});
 								item.items[j].title.bind('mouseleave.sewoltm', function(e) {
 									if(self.enableEvent !== true) return;
-									if(!self.$items[jQuery(this).attr('data-item')].items[jQuery(this).attr('data-items')].item.hasClass('active')) {
+									if( jQuery(this).attr('data-item') != self.$slider.attr('data-active-item') || jQuery(this).attr('data-items') != self.$slider.attr('data-active-items') ) {
 										self.unhoverContentTitle(jQuery(this).attr('data-item'),jQuery(this).attr('data-items'));
 									}
 								});
-								item.items[j].item.data('hoverevent',true);
-							}
-							if(this.$el.data('mode') == 'full') {
-								item.items[j].title.unbind('click.sewoltm');
-								item.items[j].item.data('clickevent',false);
-							} else if(this.$el.data('mode') == 'overlay') {
-								if(item.items[j].item.data('clickevent') !== true) {
-									item.items[j].title.bind('click.sewoltm',function(e) {
-										if(self.enableEvent !== true) return;
-										self.showContent(jQuery(this).attr('data-item'),jQuery(this).attr('data-items'),self.options.showContentAnimate);
-									});
-									item.items[j].item.data('clickevent',true);
-								}
+								item.items[j].item.data('clickevent',true);
 							}
 						}
 					}
 				}
 			}
+			this.$el.bind('mouseleave.sewoltm', function(e) {
+				if(self.$slider.hasClass('active')) {
+					var i = self.$slider.attr('data-active-item');
+					var j = self.$slider.attr('data-active-items');
+					self.activeElement(i,false);
+					self.currentActivate = i;
+					self.hoverContentTitle(i,j);
+				}
+			});
+
+			this.$slider.find('.icon-close').bind('click.sewoltm touchstart.sewoltm', function(e) {
+				self.hideContent(self.options.showContentAnimate);
+			});
+
 			this.$scrollElement.scroll(function(e){
 				var self = this;
 			});
+
 			$window.bind('resize.sewoltm',function(e) {
 				if(self.enableEvent === true) {
 					self.resize();
@@ -376,6 +540,8 @@
 					}
 				}
 			}
+			this.$el.unbind('mouseleave.sewoltm');
+			this.$slider.find('.icon-close').unbind('click.sewoltm touchstart.sewoltm');
 			this.$scrollElement.unbind('scroll');
 //			$window.off('resize.sewoltm');
 		},
@@ -384,10 +550,10 @@
 		},
 		stop : function() {
 			this.disableEvent();
+			this.hideContent('');
 			for(var i=0; i<this.$items.length; i++) {
 				for(var j=0; j<this.$items[i].items.length; j++) {
 					this.unhoverContentTitle(i,j);
-					this.hideContent(i,j,'');
 				}
 			}
 		}

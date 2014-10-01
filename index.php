@@ -21,6 +21,7 @@ $tags = $timeline['tag'];
 	<link rel="stylesheet" type="text/css" href="./css/layout.css">
 	<link rel="stylesheet" type="text/css" href="./fsbb/BookBlock/css/bookblock.css">
 	<link rel="stylesheet" type="text/css" href="./fsbb/perfect-scrollbar/min/perfect-scrollbar.min.css">
+	<link rel="stylesheet" type="text/css" href="./fsbb/OpeningSequence/css/component.css">
 	<link rel="stylesheet" type="text/css" href="./fsbb/css/fsbb.component.css">
 	<link rel="stylesheet" type="text/css" href="./css/sewol.timeline.css">
 	<link rel="stylesheet" type="text/css" href="./css/marsa.diagram.css">
@@ -33,6 +34,7 @@ $tags = $timeline['tag'];
 	<script src="./fsbb/BookBlock/js/modernizr.custom.js"></script>
 	<script src="./fsbb/BookBlock/js/jquery.bookblock.js"></script>
 	<script src="./fsbb/perfect-scrollbar/min/perfect-scrollbar.min.js"></script>
+	<script src="./fsbb/OpeningSequence/js/jquery.lettering.js"></script>
 	<script src="./fsbb/js/jquery.fsbb.js"></script>
 	<script type="text/javascript" src="./js/jquery.sewol-timeline.js"></script>
 	<script type="text/javascript" src="./js/jquery.marsa-diagram.js"></script>
@@ -44,8 +46,11 @@ $tags = $timeline['tag'];
 		<header id="site-header">
 		</header>
 		<div id="site-main">
-			<h1 id="headline_title"><svg version="1.0" id="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="420px" height="78px" viewBox="0 0 420 78" enable-background="new 0 0 420 78" xml:space="preserve"><image xlink:href="./images/title.svg" src="./images/title.png" width="420px" height="78px" /></svg></h1>
 			<div id="article-flip" class="four-slide">
+				<h1 id="headline_title">
+					<svg version="1.0" id="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="420px" height="78px" viewBox="0 0 420 78" enable-background="new 0 0 420 78" xml:space="preserve"><image xlink:href="./images/title.svg" src="./images/title.png" width="420px" height="78px" /></svg>
+					<div class="subtitle"><h2>타임라인으로 탐구하는 세월호 참사원인</h2></div>
+				</h1>
 				<div id="chapter1-item" class="four-item" data-label="2012.9" data-title="<?php print $chapter[1]['headline']; ?>">
 					<div class="item-wrapper">
 						<div id="chapter1-content" class="item-inner">
@@ -71,6 +76,8 @@ $tags = $timeline['tag'];
 												<div class="text-wrap">
 													<div class="description">
 														<div class="inner noswipe">
+															<div class="pubdate"><?php print $startDate; ?></div>
+															<h3 class="title"><?php print $data[$i]['headline']; ?></h3>
 															<?php print $data[$i]['text']; ?>
 <?php													if($data[$i]['asset'] || $data[$i]['media']) {?>
 															<dl class="reference">
@@ -149,6 +156,8 @@ $tags = $timeline['tag'];
 												<div class="text-wrap">
 													<div class="description">
 														<div class="inner noswipe">
+															<div class="pubdate"><?php print $startDate; ?></div>
+															<h3 class="title"><?php print $data[$i]['headline']; ?></h3>
 															<?php print $data[$i]['text']; ?>
 <?php													if($data[$i]['asset'] || $data[$i]['media']) {?>
 															<dl class="reference">
@@ -227,6 +236,8 @@ $tags = $timeline['tag'];
 												<div class="text-wrap">
 													<div class="description">
 														<div class="inner noswipe">
+															<div class="pubdate"><?php print $startDate; ?></div>
+															<h3 class="title"><?php print $data[$i]['headline']; ?></h3>
 															<?php print $data[$i]['text']; ?>
 <?php													if($data[$i]['asset'] || $data[$i]['media']) {?>
 															<dl class="reference">
@@ -305,6 +316,8 @@ $tags = $timeline['tag'];
 												<div class="text-wrap">
 													<div class="description">
 														<div class="inner noswipe">
+															<div class="pubdate"><?php print $startDate; ?></div>
+															<h3 class="title"><?php print $data[$i]['headline']; ?></h3>
 															<?php print $data[$i]['text']; ?>
 <?php													if($data[$i]['asset'] || $data[$i]['media']) {?>
 															<dl class="reference">
@@ -363,6 +376,9 @@ $tags = $timeline['tag'];
 		</div>
 		<footer id="site-footer">
 			<ul class="nav">
+				<li id="mobile-menu">
+					<div><span>메뉴</span></div>
+				</li>
 				<li id="foot-logo">
 					<div><span>세월호는 왜.</span></div>
 				</li>
@@ -405,7 +421,36 @@ $tags = $timeline['tag'];
 						</ul>
 						<div class="arrow"></div>
 					</div>
-				</section>
+				</li>
+			</ul>
+		</footer>
+		<footer id="mobile-site-footer">
+			<div class="mobile-nav">
+				<div class="m-navi-wrapper">
+					<ul id="m-main-navi">
+						<li class="go-home">
+							<div><span>홈으로</span></div>
+						</li>
+						<li class="chapter">
+							<div><span>목차</span></div>
+							<ul class="chapter-navi">
+								<li class="go-chapter" data-chapter="1"><span>19년차 중고선박 수입</span></li>
+								<li class="go-chapter" data-chapter="2"><span>불법개조와 부당승인</span></li>
+								<li class="go-chapter" data-chapter="3"><span>불법과적단속과 안전진단 미비</span></li>
+								<li class="go-chapter" data-chapter="4"><span>진도해역 침목과 구조실패</span></li>
+							</ul>
+						</li>
+						<li class="go-marsa">
+							<div><span>해양구조협회 관계도</span></div>
+						</li>
+						<li class="share box-info" for="share-content">
+							<div><span>공유하기</span></div>
+						</li>
+						<li class="creator box-info" for="creator-content">
+							<div><span>만든이들</span></div>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</footer>
 	</div>

@@ -17,8 +17,8 @@
 						<ul>
 							<li><label>국회의원</label> 이병석(새누리)</li>
 							<li><label>국회의원</label> 주영순(새누리)</li>
-							<li><label>국회의원</label> 강창일(새누리)</li>
-							<li><label>국회의원</label> 아재군(새누리,의원직 상실)</li>
+							<li><label>국회의원</label> 강창일(새정치)</li>
+							<li><label>국회의원</label> 이재균(새누리,의원직 상실)</li>
 							<li><label>인천광역시장</label> 송영길</li>
 							<li><label>전 해양수산부장관</label> 오거돈</li>
 						</ul>

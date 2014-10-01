@@ -1,19 +1,19 @@
 .marsa-diagram img.background {
 	position: absolute;
-	z-index: 1;
+	z-index: 201;
 }
 .marsa-diagram .wrapper {
-	z-index: 2;
+	z-index: 202;
 }
 .marsa-diagram .title {
 	position: absolute;
-	z-index: 3;
+	z-index: 203;
 	left: 42%;
 	top: 13%;
 }
 .marsa-diagram .element {
 	position: absolute;
-	z-index: 5;
+	z-index: 205;
 	left: 42%;
 	top: 13%;
 	transition: all 0.8s;
@@ -26,7 +26,7 @@
 .marsa-diagram .connector {
 	position: absolute;
 	display: inline-block;
-	z-index: 4;
+	z-index: 204;
 }
 .marsa-diagram .connector.active {
 	color: #FBF59B;
