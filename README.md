@@ -81,14 +81,14 @@
     * 각 모드별로 auto-scroll 문제를 해결하기 위해 또 다른 jquery plugin perfect-scrollbar를 사용합니다.
     * 사이트 첫번째 오프닝 에니메이션을 위해 OpeningSequence 컴포넌트를 사용했습니다.
     * 이 소스는 출처와 라이센스만 명시한다면 누구나 재배포, 수정배포가 가능합니다.
-    * 상세한 메뉴얼을 하단 5번에서
+    * 상세한 메뉴얼을 하단 6번에서
     * License: [MIT License][license-mit]
 
 2.  jquery.sewol-timeline.js
     * 폴더: js/jquery.sewol-timeline.js, css/sewol.timeline.css
     * 각 chapter는 타임라인 형식으로 구성되어 있습니다. 이 각각의 타임라인들을 실제로 콘트롤하는 jquery plugin 입니다.
     * 이 소스 역시 출처와 라이센스만 명시한다면 누구나 배포, 재수정 배포할 수 있습니다.
-    * 상세한 메뉴얼을 하단 6번에서
+    * 상세한 메뉴얼을 하단 7번에서
     * License: [MIT License][license-mit]
 
 3.  marsa.php
