@@ -161,6 +161,41 @@
         }
         ```
 
+*  HTML markup
+   ```
+   <div id="" class="four-slide">
+       <h1 id="" class="fsbb-title">커버타이틀(<img> / <svg> / 문자열</h1>
+       <div class="four-item" data-title="chapter1 제목(아래 chapter navigation 자동완성시 사용)">
+           <div class="item-wrapper">
+               <h2 class="subject">chapter1 제목(<img> / <svg> / 문자열</h2>
+               <section class="summary">chapter1 요약문</section>
+               <section class="content">chapter1 내용</section>
+           </div>
+       </div>
+       <div class="four-item" data-title="chapter2 제목">
+           <div class="item-wrapper">
+               <h2 class="subject">chapter2 제목(<img> / <svg> / 문자열</h2>
+               <section class="summary">chapter2 요약문</section>
+               <section class="content">chapter2 내용</section>
+           </div>
+       </div>
+       <div class="four-item" data-title="chapter3 제목">
+           <div class="item-wrapper">
+               <h2 class="subject">chapter3 제목(<img> / <svg> / 문자열</h2>
+               <section class="summary">chapter3 요약문</section>
+               <section class="content">chapter3 내용</section>
+           </div>
+       </div>
+       <div class="four-item" data-title="chapter4 제목">
+           <div class="item-wrapper">
+               <h2 class="subject">chapter4 제목(<img> / <svg> / 문자열</h2>
+               <section class="summary">chapter4 요약문</section>
+               <section class="content">chapter4 내용</section>
+           </div>
+       </div>
+   </div>
+   ```
+
 7.  jquery.sewol-timeline.js 사용법
 -----------------------------------
 
