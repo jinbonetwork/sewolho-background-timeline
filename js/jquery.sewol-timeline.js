@@ -238,7 +238,7 @@
 				}
 				this.$slider.addClass(show_effect);
 				this.$slider.data('cur-effect',show_effect);
-				this.$slider.find('.slide-item.current').html('').append(this.$items[i].items[j].text);
+				this.$slider.find('.slide-item.current').html('').append(this.$items[i].items[j].text.clone());
 				this.$slider.addClass('active');
 				if(show_effect) {
 					setTimeout(function() {
@@ -270,7 +270,7 @@
 					else var dir = 'current';
 				}
 				if(dir != 'current')
-					this.$slider.find('.slide-item.'+dir).html('').append(this.$items[i].items[j].text);
+					this.$slider.find('.slide-item.'+dir).html('').append(this.$items[i].items[j].text.clone());
 				if(dir == 'next') {
 					this.$slider.find('.slide-item.prev').remove();
 					this.$slider.find('.slide-item.current').removeClass('current').addClass('prev');
