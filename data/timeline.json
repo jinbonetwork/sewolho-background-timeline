@@ -229,7 +229,7 @@
 				"headline" : "해경, 형식적인 운항관리규정 승인",
 				"summary" : "",
 				"unique_id" : "12",
-				"text" : "감사원 감사 결과에는 제주에서 향응을 제공받은 인천해경 직원 3명이 제주도에서 인천항으로 돌아올 때 시험운항 중인 세월호를 탔다는 것도 나와있다. 세월호 운항관리규정 심사위원회를 개최하면서는 안전운항의 핵심요소인 '선박복원성 계산서' 등의 관련서류를 심사위원들에게 제공하지 않은 채 형식적으로 심사를 진행했고 심사위가 요구한 보완사항 중 3개 사항이 제대로 이행되지 않았는데도 운항관리규정을 승인했다.",
+				"text" : "감사원 감사 결과에는 제주에서 향응을 제공받은 인천해경 직원 3명이 제주도에서 인천항으로 돌아올 때 시험운항 중인 세월호를 탔다는 것도 나와있다. 세월호 운항관리규정 심사위원회를 개최하면서는 안전운항의 핵심요소인 <strong>'선박복원성 계산서' 등의 관련서류를 심사위원들에게 제공하지 않은 채 형식적으로 심사</strong>를 진행했고 심사위가 요구한 보완사항 중 3개 사항이 제대로 이행되지 않았는데도 운항관리규정을 승인했다.",
 				"asset" : {
 					"media" : "https://www.bai.go.kr:444/HPBKAudResultOpenAction.do?method=detailData&TASK_TYPE=KP1&CYBER_PUHE_YN=Y&PAGE=3&ROW=10&SCHYN=&SCHTYPE=&SCHKEY=&FROM_REG_DATE=&TO_REG_DATE=&CHRG_BURDIV_CD=&LINK_ORG_CD=&AUD_TYPE_CD=&AUD_TYPE_KEY=&MENU_TYPE=HA&HGUBUN=N&org.apache.struts.taglib.html.TOKEN=981bda1bef4f1d1415338ec7bf1fca8b&SEQ_NO=1633&AUD_YEAR_NO=2014145",
 					"credit" : "감사원",

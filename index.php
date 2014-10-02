@@ -1,11 +1,16 @@
 <?php
 require_once "libs/get_content.php";
+require_once "libs/Browser.class.php";
 $timeline = get_timeline("data/timeline.json");
 $date = $timeline['date'];
 $chapter = $timeline['chapter'];
 $tags = $timeline['tag'];
-?>
-<!DOCTYPE html>
+$browser = new Browser();
+if($browser->getBrowser() == 'Internet Explorer' && preg_match("/^[6-8]{1}/i",$browser->getVersion())) {
+	include "ie8.html";
+	exit;
+}
+?><!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">

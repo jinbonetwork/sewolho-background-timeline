@@ -64,7 +64,7 @@
 	text-align: justify;
 }
 .cover .four-slide .item-wrapper .item-inner .summary {
-	width: auto !important;
+	width: 90% !important;
 }
 
 .four-slide .item-wrapper.hover svg path,
