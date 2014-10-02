@@ -545,11 +545,9 @@
 						right : 39,
 						down : 40
 					};
-					console.log(keyCode);
 
 					var s_i = self.$slider.attr('data-active-item');
 					var s_j = self.$slider.attr('data-active-items');
-					console.log(s_i,s_j);
 					if( isNaN(s_i) || isNaN(s_j) ) {
 						switch (keyCode) {
 							case arrow.left:

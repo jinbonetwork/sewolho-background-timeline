@@ -12,10 +12,13 @@ $tags = $timeline['tag'];
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 	<meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 	<title>세월호는 왜..</title>
-	<meta property="og:title" content="세월호는 왜.." />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@jinbonet" />
+	<meta name="twitter:creator" content="@jinbonet" />
+	<meta property="og:title" content="세월호는 왜." />
 	<meta property="og:site_name" content="Taogi Special Project: 세월호" />
 	<meta property="og:url" content="http://www.taogi.net/special/sewolho/background/" />
-	<meta property="og:description" content="세월호 참사의 구조적인 원인 타임라인" />
+	<meta property="og:description" content="타임라인으로 탐구하는 세월호 참사의 구조적 원인과 행위자들" />
 	<meta property="og:image" content="http://www.taogi.net/special/sewolho/background/images/og.jpg" />
 	<link rel="shortcut icon" href="./images/favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="./css/layout.css">
@@ -49,7 +52,7 @@ $tags = $timeline['tag'];
 			<div id="article-flip" class="four-slide">
 				<h1 id="headline_title">
 					<svg version="1.0" id="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="420px" height="78px" viewBox="0 0 420 78" enable-background="new 0 0 420 78" xml:space="preserve"><image xlink:href="./images/title.svg" src="./images/title.png" width="420px" height="78px" /></svg>
-					<div class="subtitle"><h2>타임라인으로 탐구하는 세월호 참사원인</h2></div>
+					<div class="subtitle"><h2>타임라인으로 탐구하는 세월호 참사의 구조적 원인과 행위자들</h2></div>
 				</h1>
 				<div id="chapter1-item" class="four-item" data-label="2012.9" data-title="<?php print $chapter[1]['headline']; ?>">
 					<div class="item-wrapper">
@@ -400,7 +403,7 @@ $tags = $timeline['tag'];
 					<div class="wrapper">
 						<div class="icon-close"><span>Close</span></div>
 						<ul>
-							<li class="twitter"><a href="https://twitter.com/share?text=<?php print rawurlencode('타임라인으로 탐구하는 세월호는 왜.'); ?>" title="트위터 리트윗하기" target="_blank"><span>Twitter</span></a></li>
+							<li class="twitter"><a href="https://twitter.com/share?text=<?php print rawurlencode('타임라인으로 탐구하는 세월호 참사의 구조적 원인과 행위자들: [세월호는 왜.]'); ?>" title="트위터 리트윗하기" target="_blank"><span>Twitter</span></a></li>
 							<li class="facebook"><a href="https://facebook.com/sharer.php?u=<?php print rawurlencode('http://www.taogi.net/special/sewolho/background/'); ?>" title="페이스북 좋아요" target="_blank"><span>FaceBook</span></a></li>
 							<li class="github"><a href="https://github.com/jinbonetwork/sewolho-background-timeline" title="GitHub 소스 공유하기" target="_blank"><span>GitHub</span></a></li>
 						</ul>

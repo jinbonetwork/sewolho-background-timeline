@@ -63,6 +63,9 @@
 	line-height: 150%;
 	text-align: justify;
 }
+.cover .four-slide .item-wrapper .item-inner .summary {
+	width: auto !important;
+}
 
 .four-slide .item-wrapper.hover svg path,
 .four-slide .item-wrapper:hover svg path {
@@ -247,7 +250,7 @@
 .sewol-content-slider .text .text-wrap .description div.inner blockquote {
 	font-size: 0.95em;
 	margin: 20px 0;
-	background: rgba(0,0,0,0.1);
+	background: #8ABFB0;
 	padding: 10px 20px 10px 30px;
 }
 .sewol-content-slider .text .text-wrap .description div.inner dl.reference {
