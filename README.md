@@ -42,6 +42,7 @@
 * PC를 통해 타임라인을 보시는 분들은 키보드의 페이지업/다운 키를 사용하실 수 있습니다. PageUp은 이전 Chapter로, PageDown은 다음 Chapter로 넘어갑니다.
 * 모바일을 통해 보시는 분들은 왼쪽 하단 노란색 메뉴버튼을 활용하시면 다양한 내용을 보실 수 있습니다.
 * 각 내용중에 행위 주체라는 버튼이 있습니다. 해당 사건과 관련된 주요 담당부처나 법령을 표시하고 있습니다. 이 버튼을 클릭하시면, 해당 부처나 법령이 연관된 모든 사건들을 4분할 화면에서 일목요연하게 보실 수 있습니다.
+* IE8 이하 브라우져에서는 보실 수 없습니다. <a href="https://www.google.co.kr/chrome/index.html?hl=ko&brand=CHNG&utm_source=ko-hpp&utm_medium=hpp&utm_campaign=ko" target="_blank">크롬</a>이나 <a href="http://www.mozilla.org/ko/firefox/new/" target="_blank">파이어폭스</a>등 대체브라우져를 사용하세요.
 
 
 기술 설명(Document)
