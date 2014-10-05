@@ -305,12 +305,26 @@
 				"summary" : "해양수산부(전 국토해양부)가 <대형해양사고 예방을 위한 안전관리체제> 연구용역을 공개. 연구용역은 선원노령화 및 부족한 안전의식을 지적. 또한 영세 선사에서는 스스로 안전관리를 수행할 수 없을뿐더러 선박 안전관리 대행업체들에는 안전관리자가 부족한 것을 지적",
 				"unique_id" : "16",
 				"text" : "선박 연령을 30년으로 완화한 조건이 평상시의 선박 검사 시스템 강화였지만 실제로는 이뤄지지 않았다. <ul><li>정부연구용역인 <연안여객선 선령제한제도 개선 연구>(2008), <대형해양사고 예방을 위한 안전관리체제>(2010)</li><li>해양수산부<sub>전 국토해양부</sub> 문건 <국가해사안전기본계획>(2012), <국가해사안전시행계획></li><li>해양경찰 문건 <수난대비기본계획>(2013), <수난대비집행계획></li></ul> 이상의 연구들에서 지속적으로 선장 및 선원의 노령화와 안전의식 등 자질문제가 가장 핵심적인 안전문제로 지적됐다. 또한 연구용역들에서는 선박회사들의 안전관리를 대행하는 대행업체에도 안전관리 책임자와 안전관리자가 심각하게 부족한 상황, 연안여객선사의 체계적인 안전관리가 부족하다는 것을 지적했다. <figure><img src=data/files/safety-outsourcing.png></figure>이처럼 안전관리체계의 문제를 정부 스스로 인지하고 있었음에도 세월호 침몰사고가 발생하기까지 실질적인 개선이 이루어지지 않았다.",
-				"asset" : {
-					"media" : "http://www.opengirok.or.kr/3818",
-					"credit" : "정보공개센터",
-					"caption" : "<sup>본문 표 출처</sup>해양재난사고 안전관리체제 문제점 알고 있었던 정부, 왜 세월호 참사 막지 못했나?",
-					"thumbnail" : ""
-				}
+				"media" : [
+					{
+						"media" : "http://www.opengirok.or.kr/3818",
+						"credit" : "정보공개센터",
+						"caption" : "<sup>본문 표 출처</sup>해양재난사고 안전관리체제 문제점 알고 있었던 정부, 왜 세월호 참사 막지 못했나?",
+						"thumbnail" : ""
+					},
+					{
+						"media" : "http://www.prism.go.kr/homepage/theme/retrieveThemeDetail.do;jsessionid=5BD4E687F4547CCA4F696163E4EE8F88.node02?cond_research_name&cond_organ_id&cond_research_year_start&cond_research_year_end&cond_brm_super_id=NB000120061201100059544&research_id=1611000-200800041&pageIndex=32&leftMenuLevel=110",
+						"credit" : "한국해양수산연수원 - 해수부",
+						"caption" : "연안여객선 선령제한제도 개선 연구보고서",
+						"thumbnail" : ""
+					},
+					{
+						"media" : "http://www.prism.go.kr/homepage/researchCommon/retrieveResearchDetailPopup.do?research_id=1611000-201000162",
+						"credit" : "한국해양수산연수원 - 해수부",
+						"caption" : "대형해양사고 예방을 위한 안전관리체제 운영개선 연구",
+						"thumbnail" : ""
+					}
+				]
 			},
 			{
 				"startDate" : "2012.8",
@@ -699,7 +713,7 @@
 				"headline" : "잠수가능한 서해경찰청 특공대 도착",
 				"summary": "",
 				"unique_id" : "29",
-				"text" : "사고 당일 잠수가 가능한 해양경찰청 소속의 구조전담인력중 가장 먼저 사고해역에 도착한 것은 서해경찰청 특공대였다. 하지만 이때는 이미 세월호가 완전 침몰한 상태였다.<br>해경이 출동 지시를 내린 것은 오전 8시 58분이었지만, 특공대원이 헬기에서 민간 어선으로 갈아타고 사고해역에 오는데 2시간 20분이나 걸렸다. 가장 신속히 현장에 도착해 인명구조를 펼쳐야 했던 특공대는 타고 갈 전용 헬기가 없었던 것이다.<figure><img src=data/files/2014/0503/1398961497_139896145050_20140503.JPG><figcaption>세월호 투입 해경 헬기 현황(한겨레)</figcaption></figure>일반 구조대와 달리 공기탱크와 풀페이스마스크, 기체혼합장비 등을 보유하고 있어 심해까지 잠수가 가능한 특수구조단은 부산에 소재한 남해해양경찰청 소속의 단 11명이 전부였다. 이 특수구조단은 사고 당일 육로를 이용해 김해공항과 목포공항 등을 돌아 4월 16일 오후 1시 40분에야 현장에 도착했다. <strong>세월호 침몰당시 골든 타임안에 그 아이들과 시민들을 구할 인력과 장비는 당시 해경에 전혀 없었다</strong>고 보아야 한다.",
+				"text" : "사고 당일 잠수가 가능한 해양경찰청 소속의 구조전담인력중 가장 먼저 사고해역에 도착한 것은 서해경찰청 특공대였다. 하지만 이때는 이미 세월호가 완전 침몰한 상태였다.<br>해경이 출동 지시를 내린 것은 오전 8시 58분이었지만, 특공대원이 헬기에서 민간 어선으로 갈아타고 사고해역에 오는데 2시간 20분이나 걸렸다. 가장 신속히 현장에 도착해 인명구조를 펼쳐야 했던 특공대는 타고 갈 전용 헬기가 없었던 것이다.<figure><img src=data/files/1398961497_139896145050_20140503.JPG><figcaption>세월호 투입 해경 헬기 현황(한겨레)</figcaption></figure>일반 구조대와 달리 공기탱크와 풀페이스마스크, 기체혼합장비 등을 보유하고 있어 심해까지 잠수가 가능한 특수구조단은 부산에 소재한 남해해양경찰청 소속의 단 11명이 전부였다. 이 특수구조단은 사고 당일 육로를 이용해 김해공항과 목포공항 등을 돌아 4월 16일 오후 1시 40분에야 현장에 도착했다. <strong>세월호 침몰당시 골든 타임안에 그 아이들과 시민들을 구할 인력과 장비는 당시 해경에 전혀 없었다</strong>고 보아야 한다.",
 				"asset" : {
 					"media" : "http://www.hani.co.kr/arti/society/society_general/635462.html",
 					"credit" : "한겨레",
@@ -714,7 +728,7 @@
 				"headline" : "세월호 완전 침몰",
 				"summary" : "",
 				"unique_id" : "28",
-				"text" : "<figure><img src=data/files/16/article-2605734-1D232E4700000578-288_964x535.jpg><figcaption>선수만 남긴 채, 완전 침몰한 세월호</figcaption></figure>",
+				"text" : "<figure><img src=data/files/article-2605734-1D232E4700000578-288_964x535.jpg><figcaption>선수만 남긴 채, 완전 침몰한 세월호</figcaption></figure>",
 				"asset" : {
 					"media" : "http://www.dailymail.co.uk/news/article-2605734/South-Korea-ferry-sinks-leaving-4-people-dead-300-missing.html",
 					"credit" : "Daily Mail",

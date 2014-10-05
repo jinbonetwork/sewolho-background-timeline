@@ -16,7 +16,7 @@ if($browser->getBrowser() == 'Internet Explorer' && preg_match("/^[6-8]{1}/i",$b
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 	<meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
-	<title>세월호는 왜..</title>
+	<title>세월호는 왜.</title>
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@jinbonet" />
 	<meta name="twitter:creator" content="@jinbonet" />
