@@ -17,6 +17,8 @@ if($browser->getBrowser() == 'Internet Explorer' && preg_match("/^[6-8]{1}/i",$b
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 	<meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 	<title>세월호는 왜.</title>
+	<meta name="keywords" content="세월호,타임라인,참사,구조적 원인" />
+	<meta name="author" content="진보네트워크센터 + 정보공개센터" />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@jinbonet" />
 	<meta name="twitter:creator" content="@jinbonet" />
@@ -446,7 +448,7 @@ if($browser->getBrowser() == 'Internet Explorer' && preg_match("/^[6-8]{1}/i",$b
 								<li class="go-chapter" data-chapter="1"><span>19년차 중고선박 수입</span></li>
 								<li class="go-chapter" data-chapter="2"><span>불법개조와 부당승인</span></li>
 								<li class="go-chapter" data-chapter="3"><span>불법과적단속과 안전진단 미비</span></li>
-								<li class="go-chapter" data-chapter="4"><span>진도해역 침목과 구조실패</span></li>
+								<li class="go-chapter" data-chapter="4"><span>진도해역 침몰과 구조실패</span></li>
 							</ul>
 						</li>
 						<li class="go-marsa">
