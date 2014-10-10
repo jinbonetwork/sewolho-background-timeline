@@ -90,7 +90,7 @@ $permalink = 'http://www.taogi.net/special/sewolho/background/';
 															<div class="pubdate">
 																<?php print $startDate; ?>
 																<ul class="share">
-																	<li class="twitter"><a href="https://twitter.com/share?url=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>&text=<?php print rawurlencode('타임라인으로 탐구하는 #세월호 참사의 구조적 원인과 행위자들 #세월호는_왜. : '.$startDate.' - '.$data[$i]['headline']); ?>" title="트위터 리트윗하기" target="_blank"><span>Twitter</span></a></li>
+																	<li class="twitter"><a href="https://twitter.com/share?url=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>&text=<?php print rawurlencode('타임라인으로 탐구하는 #세월호 참사의 구조적 원인과 행위자들 #세월호는_왜. : '.$startDate.' - '.$data[$i]['headline']); ?>" title="트위터에 공유하기" target="_blank"><span>Twitter</span></a></li>
 																	<li class="facebook"><a href="https://facebook.com/sharer.php?u=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>" title="페이스북 공유하기" target="_blank"><span>FaceBook</span></a></li>
 																</ul>
 															</div>
@@ -176,7 +176,7 @@ $permalink = 'http://www.taogi.net/special/sewolho/background/';
 															<div class="pubdate">
 																<?php print $startDate; ?>
 																<ul class="share">
-																	<li class="twitter"><a href="https://twitter.com/share?url=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>&text=<?php print rawurlencode('타임라인으로 탐구하는 세월호 참사의 구조적 원인과 행위자들 [세월호는 왜.] : '.$startDate.' - '.$data[$i]['headline']); ?>" title="트위터 리트윗하기" target="_blank"><span>Twitter</span></a></li>
+																	<li class="twitter"><a href="https://twitter.com/share?url=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>&text=<?php print rawurlencode('타임라인으로 탐구하는 #세월호 참사의 구조적 원인과 행위자들 #세월호는_왜. : '.$startDate.' - '.$data[$i]['headline']); ?>" title="트위터에 공유하기" target="_blank"><span>Twitter</span></a></li>
 																	<li class="facebook"><a href="https://facebook.com/sharer.php?u=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>" title="페이스북 공유하기" target="_blank"><span>FaceBook</span></a></li>
 																</ul>
 															</div>
@@ -262,7 +262,7 @@ $permalink = 'http://www.taogi.net/special/sewolho/background/';
 															<div class="pubdate">
 																<?php print $startDate; ?>
 																<ul class="share">
-																	<li class="twitter"><a href="https://twitter.com/share?url=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>&text=<?php print rawurlencode('타임라인으로 탐구하는 세월호 참사의 구조적 원인과 행위자들 [세월호는 왜.] : '.$startDate.' - '.$data[$i]['headline']); ?>" title="트위터 리트윗하기" target="_blank"><span>Twitter</span></a></li>
+																	<li class="twitter"><a href="https://twitter.com/share?url=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>&text=<?php print rawurlencode('타임라인으로 탐구하는 #세월호 참사의 구조적 원인과 행위자들 #세월호는_왜. : '.$startDate.' - '.$data[$i]['headline']); ?>" title="트위터에 공유하기" target="_blank"><span>Twitter</span></a></li>
 																	<li class="facebook"><a href="https://facebook.com/sharer.php?u=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>" title="페이스북 공유하기" target="_blank"><span>FaceBook</span></a></li>
 																</ul>
 															</div>
@@ -348,7 +348,7 @@ $permalink = 'http://www.taogi.net/special/sewolho/background/';
 															<div class="pubdate">
 																<?php print $startDate; ?>
 																<ul class="share">
-																	<li class="twitter"><a href="https://twitter.com/share?url=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>&text=<?php print rawurlencode('타임라인으로 탐구하는 세월호 참사의 구조적 원인과 행위자들 [세월호는 왜.] : '.$startDate.' - '.$data[$i]['headline']); ?>" title="트위터 리트윗하기" target="_blank"><span>Twitter</span></a></li>
+																	<li class="twitter"><a href="https://twitter.com/share?url=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>&text=<?php print rawurlencode('타임라인으로 탐구하는 #세월호 참사의 구조적 원인과 행위자들 #세월호는_왜. : '.$startDate.' - '.$data[$i]['headline']); ?>" title="트위터에 공유하기" target="_blank"><span>Twitter</span></a></li>
 																	<li class="facebook"><a href="https://facebook.com/sharer.php?u=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>" title="페이스북 공유하기" target="_blank"><span>FaceBook</span></a></li>
 																</ul>
 															</div>
@@ -408,7 +408,7 @@ $permalink = 'http://www.taogi.net/special/sewolho/background/';
 									<p>진실이 전하는 말들을 같이 모아주세요.</p>
 									<dl class="share">
 										<dt>공유하기</dt>
-										<dd class="twitter"><a href="https://twitter.com/share?url=<?php print rawurlencode($permalink); ?>&text=<?php print rawurlencode('타임라인으로 탐구하는 세월호 참사의 구조적 원인과 행위자들: [세월호는 왜.]'); ?>" title="트위터 리트윗하기" target="_blank"><span>Twitter</span></a></dd>
+										<dd class="twitter"><a href="https://twitter.com/share?url=<?php print rawurlencode($permalink); ?>&text=<?php print rawurlencode('타임라인으로 탐구하는 세월호 참사의 구조적 원인과 행위자들: [세월호는 왜.]'); ?>" title="트위터에 공유하기" target="_blank"><span>Twitter</span></a></dd>
 										<dd class="facebook"><a href="https://facebook.com/sharer.php?u=<?php print rawurlencode($permalink); ?>" title="페이스북 공유하기" target="_blank"><span>FaceBook</span></a></dd>
 										<dd class="github"><a href="https://github.com/jinbonetwork/sewolho-background-timeline" title="GitHub 소스 공유하기" target="_blank"><span>GitHub</span></a></dd>
 									</dl>
@@ -446,7 +446,7 @@ $permalink = 'http://www.taogi.net/special/sewolho/background/';
 					<div class="wrapper">
 						<div class="icon-close"><span>Close</span></div>
 						<ul>
-							<li class="twitter"><a href="https://twitter.com/share?url=<?php print rawurlencode($permalink); ?>&text=<?php print rawurlencode('타임라인으로 탐구하는 세월호 참사의 구조적 원인과 행위자들: [세월호는 왜.]'); ?>" title="트위터 리트윗하기" target="_blank"><span>Twitter</span></a></li>
+							<li class="twitter"><a href="https://twitter.com/share?url=<?php print rawurlencode($permalink); ?>&text=<?php print rawurlencode('타임라인으로 탐구하는 세월호 참사의 구조적 원인과 행위자들: [세월호는 왜.]'); ?>" title="트위터에 공유하기" target="_blank"><span>Twitter</span></a></li>
 							<li class="facebook"><a href="https://facebook.com/sharer.php?u=<?php print rawurlencode($permalink); ?>" title="페이스북 공유하기" target="_blank"><span>FaceBook</span></a></li>
 							<li class="github"><a href="https://github.com/jinbonetwork/sewolho-background-timeline" title="GitHub 소스 공유하기" target="_blank"><span>GitHub</span></a></li>
 						</ul>
