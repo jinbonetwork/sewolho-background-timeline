@@ -39,6 +39,7 @@
 		background : '',
 		Opening : '',
 		useCoverAnimate : true,
+		chapter : 0,
 		bb_before: function(page) {
 			return false;
 		},
@@ -219,7 +220,8 @@
 		},
 		_atertLoadInit : function() {
 			var self = this;
-			this.init({});
+			if(this.options.mode != 'bookblock')
+				this.init({});
 			this.BBPage = (function() {
 				var config = {
 					$bookBlock : self.$el,
@@ -313,6 +315,8 @@
 				return { init : init , destroy : destroy };
 
 			})();
+			if(this.options.mode == 'bookblock')
+				this.bb_init({});
 		},
 		init : function(options) {
 			var self = this;
@@ -625,6 +629,23 @@
 				}
 				this.set_ePos();
 			}
+		},
+		bb_init : function(options) {
+			var self = this;
+			var opt = $.extend( true, {}, this.options, options );
+			if(this.fs_mode) this.$wel.removeClass(this.fs_mode);
+			this.fs_mode = opt.mode;
+			if(jQuery(window).width() <= 640) this.Mobile = true;
+			else this.Mobile = false;
+			this.elWidth = this.$wel.width();
+			this.elHeight = this.$wel.height();
+			var ch = opt.chapter;
+			this.options.bb_before(ch);
+
+			this.destruct();
+
+			this.bbInit(ch);
+			this.perfect_scroll(self.$items[(ch-1)].item.find('.item-wrapper'));
 		},
 		bb_activate : function(options) {
 			var opt = $.extend( true, {}, jQuery.FourSlideBookBlock.bb_defaults, options );

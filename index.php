@@ -10,6 +10,7 @@ if($browser->getBrowser() == 'Internet Explorer' && preg_match("/^[6-8]{1}/i",$b
 	include "ie8.html";
 	exit;
 }
+$permalink = 'http://www.taogi.net/special/sewolho/background/';
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -24,9 +25,9 @@ if($browser->getBrowser() == 'Internet Explorer' && preg_match("/^[6-8]{1}/i",$b
 	<meta name="twitter:creator" content="@jinbonet" />
 	<meta property="og:title" content="세월호는 왜." />
 	<meta property="og:site_name" content="Taogi Special Project: 세월호" />
-	<meta property="og:url" content="http://www.taogi.net/special/sewolho/background/" />
+	<meta property="og:url" content="<?php print $permalink; ?>" />
 	<meta property="og:description" content="타임라인으로 탐구하는 세월호 참사의 구조적 원인과 행위자들" />
-	<meta property="og:image" content="http://www.taogi.net/special/sewolho/background/images/og.jpg" />
+	<meta property="og:image" content="<?php print $permalink; ?>background/images/og.jpg" />
 	<link rel="shortcut icon" href="./images/favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="./css/layout.css">
 	<link rel="stylesheet" type="text/css" href="./fsbb/BookBlock/css/bookblock.css">
@@ -80,13 +81,19 @@ if($browser->getBrowser() == 'Internet Explorer' && preg_match("/^[6-8]{1}/i",$b
 									<li class="timeline-item">
 										<div class="date"><span><?php print $startDate; ?></span></div>
 <?php								for($i=0; $i<@count($data); $i++) {?>
-										<article class="item-content <?php print implode(" ",$data[$i]['tag']); ?>" data-tags="<?php print implode(" ",$data[$i]['tag']); ?>">
+										<article id="item-<?php print $data[$i]['unique_id']; ?>" class="item-content <?php print implode(" ",$data[$i]['tag']); ?>" data-tags="<?php print implode(" ",$data[$i]['tag']); ?>" data-chapter="1">
 											<h3 class="headline"><?php print $data[$i]['headline']; ?></h3>
 											<div class="text">
 												<div class="text-wrap">
 													<div class="description">
 														<div class="inner noswipe">
-															<div class="pubdate"><?php print $startDate; ?></div>
+															<div class="pubdate">
+																<?php print $startDate; ?>
+																<ul class="share">
+																	<li class="twitter"><a href="https://twitter.com/share?url=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>&text=<?php print rawurlencode('타임라인으로 탐구하는 세월호 참사의 구조적 원인과 행위자들 [세월호는 왜.] : '.$startDate.' - '.$data[$i]['headline']); ?>" title="트위터 리트윗하기" target="_blank"><span>Twitter</span></a></li>
+																	<li class="facebook"><a href="https://facebook.com/sharer.php?u=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>" title="페이스북 공유하기" target="_blank"><span>FaceBook</span></a></li>
+																</ul>
+															</div>
 															<h3 class="title"><?php print $data[$i]['headline']; ?></h3>
 															<?php print $data[$i]['text']; ?>
 <?php													if($data[$i]['asset'] || $data[$i]['media']) {?>
@@ -160,13 +167,19 @@ if($browser->getBrowser() == 'Internet Explorer' && preg_match("/^[6-8]{1}/i",$b
 									<li class="timeline-item">
 										<div class="date"><?php print $startDate; ?></div>
 <?php								for($i=0; $i<@count($data); $i++) {?>
-										<article class="item-content <?php print implode(" ",$data[$i]['tag']); ?>" data-tags="<?php print implode(" ",$data[$i]['tag']); ?>">
+										<article id="item-<?php print $data[$i]['unique_id']; ?>" class="item-content <?php print implode(" ",$data[$i]['tag']); ?>" data-tags="<?php print implode(" ",$data[$i]['tag']); ?>" data-chapter="2">
 											<h3 class="headline"><?php print $data[$i]['headline']; ?></h3>
 											<div class="text">
 												<div class="text-wrap">
 													<div class="description">
 														<div class="inner noswipe">
-															<div class="pubdate"><?php print $startDate; ?></div>
+															<div class="pubdate">
+																<?php print $startDate; ?>
+																<ul class="share">
+																	<li class="twitter"><a href="https://twitter.com/share?url=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>&text=<?php print rawurlencode('타임라인으로 탐구하는 세월호 참사의 구조적 원인과 행위자들 [세월호는 왜.] : '.$startDate.' - '.$data[$i]['headline']); ?>" title="트위터 리트윗하기" target="_blank"><span>Twitter</span></a></li>
+																	<li class="facebook"><a href="https://facebook.com/sharer.php?u=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>" title="페이스북 공유하기" target="_blank"><span>FaceBook</span></a></li>
+																</ul>
+															</div>
 															<h3 class="title"><?php print $data[$i]['headline']; ?></h3>
 															<?php print $data[$i]['text']; ?>
 <?php													if($data[$i]['asset'] || $data[$i]['media']) {?>
@@ -240,13 +253,19 @@ if($browser->getBrowser() == 'Internet Explorer' && preg_match("/^[6-8]{1}/i",$b
 									<li class="timeline-item">
 										<div class="date"><?php print $startDate; ?></div>
 <?php								for($i=0; $i<@count($data); $i++) {?>
-										<article class="item-content <?php print implode(" ",$data[$i]['tag']); ?>" data-tags="<?php print implode(" ",$data[$i]['tag']); ?>">
+										<article id="item-<?php print $data[$i]['unique_id']; ?>" class="item-content <?php print implode(" ",$data[$i]['tag']); ?>" data-tags="<?php print implode(" ",$data[$i]['tag']); ?>" data-chapter="3">
 											<h3 class="headline"><?php print $data[$i]['headline']; ?></h3>
 											<div class="text">
 												<div class="text-wrap">
 													<div class="description">
 														<div class="inner noswipe">
-															<div class="pubdate"><?php print $startDate; ?></div>
+															<div class="pubdate">
+																<?php print $startDate; ?>
+																<ul class="share">
+																	<li class="twitter"><a href="https://twitter.com/share?url=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>&text=<?php print rawurlencode('타임라인으로 탐구하는 세월호 참사의 구조적 원인과 행위자들 [세월호는 왜.] : '.$startDate.' - '.$data[$i]['headline']); ?>" title="트위터 리트윗하기" target="_blank"><span>Twitter</span></a></li>
+																	<li class="facebook"><a href="https://facebook.com/sharer.php?u=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>" title="페이스북 공유하기" target="_blank"><span>FaceBook</span></a></li>
+																</ul>
+															</div>
 															<h3 class="title"><?php print $data[$i]['headline']; ?></h3>
 															<?php print $data[$i]['text']; ?>
 <?php													if($data[$i]['asset'] || $data[$i]['media']) {?>
@@ -320,13 +339,19 @@ if($browser->getBrowser() == 'Internet Explorer' && preg_match("/^[6-8]{1}/i",$b
 									<li class="timeline-item">
 										<div class="date"><?php print $startDate; ?></div>
 <?php								for($i=0; $i<@count($data); $i++) {?>
-										<article class="item-content <?php print implode(" ",$data[$i]['tag']); ?>" data-tags="<?php print implode(" ",$data[$i]['tag']); ?>">
+										<article id="item-<?php print $data[$i]['unique_id']; ?>" class="item-content <?php print implode(" ",$data[$i]['tag']); ?>" data-tags="<?php print implode(" ",$data[$i]['tag']); ?>" data-chapter="4">
 											<h3 class="headline"><?php print $data[$i]['headline']; ?></h3>
 											<div class="text">
 												<div class="text-wrap">
 													<div class="description">
 														<div class="inner noswipe">
-															<div class="pubdate"><?php print $startDate; ?></div>
+															<div class="pubdate">
+																<?php print $startDate; ?>
+																<ul class="share">
+																	<li class="twitter"><a href="https://twitter.com/share?url=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>&text=<?php print rawurlencode('타임라인으로 탐구하는 세월호 참사의 구조적 원인과 행위자들 [세월호는 왜.] : '.$startDate.' - '.$data[$i]['headline']); ?>" title="트위터 리트윗하기" target="_blank"><span>Twitter</span></a></li>
+																	<li class="facebook"><a href="https://facebook.com/sharer.php?u=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>" title="페이스북 공유하기" target="_blank"><span>FaceBook</span></a></li>
+																</ul>
+															</div>
 															<h3 class="title"><?php print $data[$i]['headline']; ?></h3>
 															<?php print $data[$i]['text']; ?>
 <?php													if($data[$i]['asset'] || $data[$i]['media']) {?>
@@ -377,6 +402,17 @@ if($browser->getBrowser() == 'Internet Explorer' && preg_match("/^[6-8]{1}/i",$b
 <?php							}
 							}?>
 								</ul>
+								<div id="remember_sewol">
+									<p>"진실은 침몰하지 않는다."</p>
+									<p>진실은 기억하려는 이에게 항상 말을 걸어옵니다.</p>
+									<p>진실이 전하는 말들을 같이 모아주세요.</p>
+									<dl class="share">
+										<dt>공유하기</dt>
+										<dd class="twitter"><a href="https://twitter.com/share?url=<?php print rawurlencode($permalink); ?>&text=<?php print rawurlencode('타임라인으로 탐구하는 세월호 참사의 구조적 원인과 행위자들: [세월호는 왜.]'); ?>" title="트위터 리트윗하기" target="_blank"><span>Twitter</span></a></dd>
+										<dd class="facebook"><a href="https://facebook.com/sharer.php?u=<?php print rawurlencode($permalink); ?>" title="페이스북 공유하기" target="_blank"><span>FaceBook</span></a></dd>
+										<dd class="github"><a href="https://github.com/jinbonetwork/sewolho-background-timeline" title="GitHub 소스 공유하기" target="_blank"><span>GitHub</span></a></dd>
+									</dl>
+								</div>
 							</section>
 						</div>
 					</div>
@@ -410,8 +446,8 @@ if($browser->getBrowser() == 'Internet Explorer' && preg_match("/^[6-8]{1}/i",$b
 					<div class="wrapper">
 						<div class="icon-close"><span>Close</span></div>
 						<ul>
-							<li class="twitter"><a href="https://twitter.com/share?text=<?php print rawurlencode('타임라인으로 탐구하는 세월호 참사의 구조적 원인과 행위자들: [세월호는 왜.]'); ?>" title="트위터 리트윗하기" target="_blank"><span>Twitter</span></a></li>
-							<li class="facebook"><a href="https://facebook.com/sharer.php?u=<?php print rawurlencode('http://www.taogi.net/special/sewolho/background/'); ?>" title="페이스북 좋아요" target="_blank"><span>FaceBook</span></a></li>
+							<li class="twitter"><a href="https://twitter.com/share?url=<?php print rawurlencode($permalink); ?>&text=<?php print rawurlencode('타임라인으로 탐구하는 세월호 참사의 구조적 원인과 행위자들: [세월호는 왜.]'); ?>" title="트위터 리트윗하기" target="_blank"><span>Twitter</span></a></li>
+							<li class="facebook"><a href="https://facebook.com/sharer.php?u=<?php print rawurlencode($permalink); ?>" title="페이스북 공유하기" target="_blank"><span>FaceBook</span></a></li>
 							<li class="github"><a href="https://github.com/jinbonetwork/sewolho-background-timeline" title="GitHub 소스 공유하기" target="_blank"><span>GitHub</span></a></li>
 						</ul>
 						<div class="arrow"></div>

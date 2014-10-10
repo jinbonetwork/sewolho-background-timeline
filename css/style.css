@@ -192,6 +192,46 @@
 	font-weight: bold;
 	color: #FBF59B;
 }
+.sewol-content-slider .text .text-wrap .description div.inner .pubdate ul.share {
+	display: inline-block;
+	margin: 0 0 0 4px;
+	padding: 0;
+	background: none;
+	border: none;
+	list-style: none;
+}
+.sewol-content-slider .text .text-wrap .description div.inner .pubdate ul.share li {
+	display: inline-block;
+	margin: 0;
+	padding: 4px 2px;
+	font-family: 'icomoon';
+	speak: none;
+	font-size: 0.84em;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.sewol-content-slider .text .text-wrap .description div.inner .pubdate ul.share li:hover {
+	background: #2B445A;
+}
+.sewol-content-slider .text .text-wrap .description div.inner .pubdate ul.share li a {
+	color: #fff;
+	text-decoration: none;
+	border: 0;
+}
+.sewol-content-slider .text .text-wrap .description div.inner .pubdate ul.share li.twitter a:before {
+	content: '\e601';
+}
+.sewol-content-slider .text .text-wrap .description div.inner .pubdate ul.share li.facebook a:before {
+	content: '\e602';
+}
+.sewol-content-slider .text .text-wrap .description div.inner .pubdate ul.share li a span {
+	display: none;
+}
 .sewol-content-slider .text .text-wrap .description div.inner h3.title {
 	font-size: 1.8em;
 	color: #2C445A;
@@ -252,6 +292,9 @@
 	margin: 20px 0;
 	background: #8ABFB0;
 	padding: 10px 20px 10px 30px;
+}
+.sewol-content-slider .text .text-wrap .description div.inner h3 {
+	font-size: 1em;
 }
 .sewol-content-slider .text .text-wrap .description div.inner dl.reference {
 	position: relative;
@@ -340,6 +383,75 @@
 .sewol-content-slider .text .text-wrap .organiztion dd {
 	margin:0;
 	padding: 11px 0;
+}
+#remember_sewol {
+	position: fixed;
+	z-index: 2;
+	max-width: 38%;
+	top: 38%;
+	right: 5%;
+	color: #fff;
+	opacity: 0;
+	transition: opacity 0.5s;
+	-webkit-transition: opacity 0.5s;
+	-moz-transition: opacity 0.5s;
+	-ms-transition: opacity 0.5s;
+	-o-transition: opacity 0.5s;
+}
+#remember_sewol p {
+	font-family: "HCR Batang", "NanumMyeongjo", serif;
+	font-size: 1.8em;
+	letter-spacing: -0.05em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+#remember_sewol dl {
+	margin: 42px 0 0 0;
+	padding: 0;
+}
+#remember_sewol dl dt {
+	margin: 0 20px 0 0;
+	padding: 0;
+	display: inline-block;
+	vertical-align: text-top;
+	font-weight: bold;
+}
+#remember_sewol dl dd {
+	margin: 0 25px 0 0;
+	padding: 0;
+	display: inline-block;
+	vertical-align: text-top;
+	font-family: 'icomoon';
+	font-size: 1.8em;
+	speak: none;
+	font-size: 2.1em;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+#remember_sewol dl dd a {
+	color: #fff;
+	text-decoration: none;
+}
+#remember_sewol dl dd a:hover {
+	color: #FBF59B;
+}
+#remember_sewol dl dd.twitter a:before {
+	content: '\e601';
+}
+#remember_sewol dl dd.facebook a:before {
+	content: '\e602';
+}
+#remember_sewol dl dd.github a:before {
+	content: '\e600';
+}
+#remember_sewol dl dd a span {
+	display: none;
 }
 
 #fsbb-org-dummy {
@@ -928,6 +1040,9 @@
 	.sewol-content-slider .text .text-wrap .organiztion dd {
 		display: inline-block;
 	}
+	#remember_sewol p {
+		font-size: 1.5em;
+	}
 }
 
 @media only screen and (max-width: 768px) {
@@ -1005,6 +1120,9 @@
 	.sewol.quart .four-slide .four-item.chapter1-item .content,
 	.sewol.quart .four-slide .four-item.chapter2-item .content {
 		margin-top: 10px;
+	}
+	#remember_sewol {
+		display: none;
 	}
 	.fsbb-org-title {
 		position: relative;

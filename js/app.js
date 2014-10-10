@@ -2,6 +2,7 @@ useWebkit = false;
 mobileMode = false;
 var transition;
 var transitionEnd;
+var unique_ID = window.location.hash.substring(1);
 
 function resizeWindow() {
 	var fh = parseInt(jQuery('#site-footer').css('height'));
@@ -299,17 +300,28 @@ jQuery(document).ready(function() {
 			};
 		}, 600);
 	}
+
+	var goChapter = 0;
+	var goItem = 0;
+	var goItems = 0;
+	if(unique_ID) {
+		var cido = jQuery('#item-'+unique_ID);
+		goChapter = parseInt(cido.attr('data-chapter'));
+	}
 	
 	jQuery('#article-flip').fsbb({
+		mode: (unique_ID ? 'bookblock' : 'cover'),
 		title: '#headline_title',
 		background: './images/background.jpg',
 		Opening: '세월호는 왜.',
+		chapter: (goChapter ? goChapter : 0),
 		bb_before: function(chapter) {
 			var fsbbc = jQuery('.fsbb-org-title');
 			if(fsbbc.length > 0) {
 				close_org_fs_mode(fsbbc);
 			}
 			jQuery('#chapter'+parseInt(jQuery('#article-flip').attr('data-currentchapter'))+'-item .sewol-timeline').sewoltm('hideContent','opacity');
+			jQuery('#remember_sewol').css('opacity',0);
 		},
 		bb_after: function(chapter) {
 			if(chapter) {
@@ -365,6 +377,13 @@ jQuery(document).ready(function() {
 					});
 				}
 			});
+			jQuery('#remember_sewol').css('opacity',0);
+		},
+		onHideContent: function(obj) {
+			var cC = parseInt(jQuery('#article-flip').attr('data-currentchapter'));
+			if(cC == 4) {
+				jQuery('#remember_sewol').css('opacity',1);
+			}
 		},
 		onFirstContent: function(obj) {
 			var btn = jQuery(obj).parents('.sewol-content-container').find('.navi.prev');
@@ -397,6 +416,9 @@ jQuery(document).ready(function() {
 						if(cC < 4) {
 							jQuery('#article-flip').bookblock('jump', (cC + 1));
 							jQuery('#chapter'+(cC + 1)+'-item .sewol-timeline').sewoltm('setStart',0,0);
+						} else {
+							jQuery('#remember_sewol').css('opacity',1);
+							jQuery('#chapter'+(cC)+'-item .sewol-timeline').sewoltm('hideContent','opacity');
 						}
 					}
 				});
@@ -416,13 +438,18 @@ jQuery(document).ready(function() {
 			}
 		}
 	});
+	if(goChapter) {
+		goItem = parseInt(cido.attr('data-item'));
+		goItems = parseInt(cido.attr('data-items'));
+		jQuery('#chapter'+(goChapter)+'-item .sewol-timeline').sewoltm('setStart',goItem,goItems);
+	}
 
 	function go_home() {
 		jQuery('.fsbb-org-title').remove();
 		jQuery('.chapter-item.hover').removeClass('hover');
 		jQuery('.overlay').removeClass('overlay');
 		jQuery('.quart').removeClass('quart');
-		jQuery('#article-flip').fsbb('init',{});
+		jQuery('#article-flip').fsbb('init',{mode: 'cover'});
 		jQuery('.sewol-timeline').sewoltm('stop');
 	}
 

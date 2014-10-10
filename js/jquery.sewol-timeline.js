@@ -39,6 +39,7 @@
 		autostart : false,
 		onBefore: function() { return false },
 		onShowContent: function(target) { return false; },
+		onHideContent: function(target) { return false; },
 		onFirstContent: function(target) { return false; },
 		onLastContent: function(target) { return false; },
 		onResize: function(uniqueID) { return false; }
@@ -326,6 +327,7 @@
 		},
 		hideContent : function(effect) {
 			var self = this;
+			this.options.onHideContent(this.$slider.find('.slide-item.current'));
 			this.$slider.find('.navi').unbind('click.sewoltm');
 			var i = this.$slider.attr('data-active-item');
 			var j = this.$slider.attr('data-active-items');
