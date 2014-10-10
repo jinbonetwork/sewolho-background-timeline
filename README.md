@@ -132,7 +132,7 @@
 
       ```
       {
-         mode: 'cover(표지모드) / quart(4분할로 내용 한꺼번에 보기모드)',
+         mode: 'cover(표지모드) / quart(4분할로 내용 한꺼번에 보기모드) / bookblock(책모드)',
          theme: 'sewol' (테마),
          tearse_speed : '1s' (transition animate speed),
          title: ''(표지 타이틀 element),
@@ -216,6 +216,7 @@
          autostart : false(타임라인 시작시 첫번째 항목을 자동으로 활성화하는 옵션)
          onBefore: function() {} (타임라인의 활성화되기 전 beforeEvent),
          onShowContent: function() { return false; } (타임라인의 개별 항목이 상세보기할때 beforeEvent),
+         onHideContent: function() { return false; } (타임라인의 개별 항목 상세보기를 닫을때 beforeEvent),
          onFirstContent: function() { return false; } (타임라인 내용보기에서 첫번째 항목일때 발생하는 Event),
          onLastContent: function() { return false; } (타임라인 내용기에서 마지막 항목일때 발생하는 Event),
          onResize: function(uniqueID) { return false; } (화면이 resizing Event가 일어날때 동작처리, uniqueID는 타임라인에 자동으로 부여되는 unique ID 값)

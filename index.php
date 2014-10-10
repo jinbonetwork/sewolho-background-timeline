@@ -90,7 +90,7 @@ $permalink = 'http://www.taogi.net/special/sewolho/background/';
 															<div class="pubdate">
 																<?php print $startDate; ?>
 																<ul class="share">
-																	<li class="twitter"><a href="https://twitter.com/share?url=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>&text=<?php print rawurlencode('타임라인으로 탐구하는 세월호 참사의 구조적 원인과 행위자들 [세월호는 왜.] : '.$startDate.' - '.$data[$i]['headline']); ?>" title="트위터 리트윗하기" target="_blank"><span>Twitter</span></a></li>
+																	<li class="twitter"><a href="https://twitter.com/share?url=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>&text=<?php print rawurlencode('타임라인으로 탐구하는 #세월호 참사의 구조적 원인과 행위자들 #세월호는_왜. : '.$startDate.' - '.$data[$i]['headline']); ?>" title="트위터 리트윗하기" target="_blank"><span>Twitter</span></a></li>
 																	<li class="facebook"><a href="https://facebook.com/sharer.php?u=<?php print rawurlencode($permalink.'#'.$data[$i]['unique_id']); ?>" title="페이스북 공유하기" target="_blank"><span>FaceBook</span></a></li>
 																</ul>
 															</div>
