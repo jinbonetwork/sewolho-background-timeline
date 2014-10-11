@@ -205,6 +205,14 @@
 		_opening : function() {
 			var self = this;
 			if(this.options.Opening) {
+				if(this.options.background) {
+					var bl = parseInt((this.$wel.outerWidth() - this.$background.width()) / 2);
+					var bt = parseInt((this.$wel.outerHeight() - this.$background.height()) / 2);
+					this.$background.css({
+						'left' : bl+'px',
+						'top'  : bt+'px'
+					});
+				}
 				var opening = jQuery('<div class="os-phrases"><h2>'+this.options.Opening+'</h2></div>');
 				this.$wel.addClass('has-opening');
 				opening.prependTo('body');
