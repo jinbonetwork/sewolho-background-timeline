@@ -389,7 +389,7 @@ $permalink = 'http://www.taogi.net/special/sewolho/background/';
 															<dt>행위 주체</dt>
 <?php												if($data[$i]['tag']) {
 														foreach($data[$i]['tag'] as $t) {?>
-															<dd><div class="organize <?php print $t; ?>" data-tag="<?php print $t; ?>"><button class="btn"><?php print $tags[$t]['name']; ?><span class="after"></span></button><?php if($tags[$t]['description']) {?><div class="org-description"><?php print $tags[$t]['descriptions']; ?></div><?php }?></div></dd>
+															<dd><div class="organize <?php print $t; ?>" data-tag="<?php print $t; ?>"><button class="btn"><?php print $tags[$t]['name']; ?><span class="after"></span></button><?php if($tags[$t]['description']) {?><div class="org-description"><?php print $tags[$t]['description']; ?></div><?php }?></div></dd>
 <?php													}
 													}?>
 														</dl>
